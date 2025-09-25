@@ -1,20 +1,48 @@
+import resolve from "@rollup/plugin-node-resolve";
 import typescript from "@rollup/plugin-typescript";
+import babel from "@rollup/plugin-babel";
+import peerDepsExternal from "rollup-plugin-peer-deps-external";
+import commonjs from "@rollup/plugin-commonjs";
 
-export default [
-  {
-    input: "Button.tsx",
-    output: {
-      file: "dist/button.js",
+export default {
+  input: "src/index.ts",
+  output: [
+    {
+      file: "dist/index.js",
+      format: "cjs",
+      sourcemap: true,
+      exports: "named",
     },
-  },
-  {
-    input: "Header.tsx",
-    output: {
-      file: "dist/header.js",
+    {
+      file: "dist/index.esm.js",
+      format: "esm",
+      sourcemap: true,
     },
-  },
-].map((entry) => ({
-  ...entry,
-  external: ["react/jsx-runtime"],
-  plugins: [typescript()],
-}));
+  ],
+  plugins: [
+    peerDepsExternal(),
+    resolve(),
+    commonjs(),
+    typescript({
+      tsconfig: "./tsconfig.json",
+    }),
+    babel({
+      babelHelpers: "bundled",
+      exclude: "node_modules/**",
+      extensions: [".js", ".jsx", ".ts", ".tsx"],
+      presets: [
+        "@babel/preset-env",
+        [
+          "@babel/preset-react",
+          {
+            runtime: "automatic",
+            importSource: "@emotion/react",
+          },
+        ],
+        "@babel/preset-typescript",
+      ],
+      plugins: ["@emotion/babel-plugin"],
+    }),
+  ],
+  external: ["react", "react-dom", "@emotion/react", "@emotion/styled"],
+};
