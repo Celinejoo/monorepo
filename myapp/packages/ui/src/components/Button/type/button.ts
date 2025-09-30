@@ -6,7 +6,6 @@ export const buttonVariantMap = {
     background-color: ${colors.primary[500]};
     color: ${colors.ui.surface};
     border: none;
-
     &:hover {
       background-color: ${colors.primary[700]};
     }

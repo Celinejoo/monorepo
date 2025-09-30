@@ -23,7 +23,7 @@ export const Button = styled.button<ButtonProps>(
       transform: "scale(0.97)",
     },
   },
-  ({ variant }) => buttonVariantMap[variant],
+  ({ variant = "solid" }) => buttonVariantMap[variant],
   ({ size = "medium" }) => buttonSizeMap[size],
   ({ full }) =>
     full
