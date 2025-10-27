@@ -3,3 +3,4 @@ export * from "./FloatingButton";
 export * from "./Typography";
 export * from "./FlexLayout";
 export * from "./Card";
+export * from "./Badges";
