@@ -10,7 +10,6 @@ export interface ButtonProps {
   size?: buttonSizeMap;
   full?: boolean;
   disabled?: boolean;
-  onClick?: () => void;
 }
 
 export const Button = styled.button<ButtonProps>(
