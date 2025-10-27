@@ -16,6 +16,7 @@ const meta: Meta<typeof Typography> = {
         "info",
         "text",
         "textSubtle",
+        "white",
       ],
     },
     display: {

@@ -8,7 +8,8 @@ export type ColorPreset =
   | "error"
   | "info"
   | "text"
-  | "textSubtle";
+  | "textSubtle"
+  | "white";
 
 export const colorPresetsMap: Record<ColorPreset, string> = {
   primary: colors.primary[500],
@@ -19,6 +20,7 @@ export const colorPresetsMap: Record<ColorPreset, string> = {
   info: colors.status.info,
   text: colors.ui.textPrimary,
   textSubtle: colors.ui.textSubtle,
+  white: colors.ui.surface,
 };
 
 export type colorPresetsMap = keyof typeof colorPresetsMap;
