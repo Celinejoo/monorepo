@@ -1,3 +1,4 @@
+import { css } from "@emotion/react";
 import styled from "@emotion/styled";
 import { CSSProperties } from "react";
 
@@ -10,12 +11,17 @@ export interface FlexLayoutProps {
 }
 
 export const FlexLayout = styled.div<FlexLayoutProps>(
-  ({ direction, alignItems, justifyContent, wrap, gap }) => ({
+  ({ direction, alignItems, justifyContent, wrap }) => ({
     display: "flex",
     flexWrap: wrap,
     flexDirection: direction,
     alignItems: alignItems,
     justifyContent: justifyContent,
-    gap: `${gap}px`,
-  })
+  }),
+  ({ gap }) =>
+    gap
+      ? css`
+          gap: ${gap}px;
+        `
+      : null
 );
