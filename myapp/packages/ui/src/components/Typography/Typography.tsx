@@ -10,7 +10,7 @@ export interface TypographyProps {
   color?: colorPresetsMap | string;
   display?: CSSProperties["display"];
   textAlign?: CSSProperties["textAlign"];
-  fontWeight: CSSProperties["fontWeight"];
+  fontWeight?: CSSProperties["fontWeight"];
   bold?: boolean;
 }
 
