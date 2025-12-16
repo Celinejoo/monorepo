@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from "@storybook/react";
 import { RowList } from "./RowList";
-import { Badges } from "./../Badges";
+import { Chip } from "./../Chip";
 import { Typography } from "../Typography";
 const meta: Meta<typeof RowList> = {
   title: "Components/RowList",
@@ -16,13 +16,13 @@ export const Default: Story = {
       <RowList
         left={<Typography typography="body">CARD</Typography>}
         contents={<RowList.Texts title="1위" subTitle="신한카드" />}
-        right={<Badges label="신한" />}
+        right={<Chip label="신한" />}
         withArrow={true}
       />
       <RowList
         left={<Typography typography="body">CARD</Typography>}
         contents={<RowList.Texts title="2위" subTitle="롯데카드" />}
-        right={<Badges label="LOTTE" />}
+        right={<Chip label="LOTTE" />}
         withArrow={true}
       />
     </ul>

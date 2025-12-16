@@ -1,6 +1,6 @@
 import styled from "@emotion/styled";
 
-import { TabsProps, TabType } from "./type/tabs";
+import { TabsProps, TabType } from "./type/tab";
 import { colors } from "@repo/tokens";
 import { css } from "@emotion/react";
 import { useState } from "react";
