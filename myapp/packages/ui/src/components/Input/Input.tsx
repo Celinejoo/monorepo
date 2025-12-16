@@ -22,4 +22,5 @@ export const Input = styled.input`
     border-color: ${colors.status.error};
   }
 `;
+
 export default Input;

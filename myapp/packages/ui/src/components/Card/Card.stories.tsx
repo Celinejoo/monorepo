@@ -1,5 +1,6 @@
 import type { Meta, StoryObj } from "@storybook/react";
 import { Card } from "./Card";
+import { Typography } from "../Typography";
 
 const meta: Meta<typeof Card> = {
   title: "Components/Card",
@@ -18,12 +19,10 @@ export const FullCard: Story = {
   },
   render: (args) => (
     <Card {...args}>
-      <div>
-        카드<br></br>
-        안의
-        <br></br>
-        내용들
-      </div>
+      <Card.Header title="title" />
+      <Card.Contents>
+        <Typography typography="bodyS">보더가 없는 카드 입니다.</Typography>
+      </Card.Contents>
     </Card>
   ),
 };
@@ -34,12 +33,10 @@ export const OutlineCard: Story = {
   },
   render: (args) => (
     <Card {...args}>
-      <div>
-        보더가 있는 카드의<br></br>
-        안의
-        <br></br>
-        내용들
-      </div>
+      <Card.Header title="title" />
+      <Card.Contents>
+        <Typography typography="bodyS">보더가 있는 카드 입니다.</Typography>
+      </Card.Contents>
     </Card>
   ),
 };

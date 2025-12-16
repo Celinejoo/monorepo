@@ -1,15 +1,24 @@
 import { css } from "@emotion/react";
 import styled from "@emotion/styled";
 import { borderRadius, colors, spacing } from "@repo/tokens";
+import { Typography } from "../Typography";
 
 export interface CardProps {
   onClick?: () => void;
-  children?: React.ReactNode;
   as?: "div" | "li";
   outlined?: boolean;
+  children?: React.ReactNode;
 }
 
-export const Card = ({ onClick, children, as, outlined }: CardProps) => (
+interface CardHeaderProps {
+  title?: string;
+}
+
+interface CardContentsProps {
+  children?: React.ReactNode;
+}
+
+export const CardBase = ({ onClick, as, outlined, children }: CardProps) => (
   <Container onClick={onClick} as={as} outlined={outlined}>
     {children}
   </Container>
@@ -34,5 +43,35 @@ const Container = styled.div<CardProps>(
           background: ${colors.gray[100]};
         `
 );
+
+const CardHeader = ({ title }: CardHeaderProps) => {
+  return (
+    <StyledCardHeader>
+      <Typography typography="bodyL">{title}</Typography>
+    </StyledCardHeader>
+  );
+};
+
+const StyledCardHeader = styled.div`
+  margin-bottom: 8px;
+`;
+
+interface CardContentsProps {
+  children?: React.ReactNode;
+}
+
+const CardContents = ({ children }: CardContentsProps) => {
+  return <div>{children}</div>;
+};
+
+interface CardCompoundComponent extends React.FC<CardProps> {
+  Header: React.FC<CardHeaderProps>;
+  Contents: React.FC<CardContentsProps>;
+}
+
+export const Card: CardCompoundComponent = Object.assign(CardBase, {
+  Header: CardHeader,
+  Contents: CardContents,
+});
 
 export default Card;
