@@ -35,6 +35,13 @@ export const TabList = styled.ul<{ type: TabType }>`
         width: 120px;
       }
     `}
+    ${({ type }) =>
+    type === "scrollable" &&
+    css`
+      > li {
+        padding: 14px 8px;
+      }
+    `}
 `;
 
 export const TabItem = styled.li<{
@@ -79,6 +86,7 @@ const IconWrap = styled.span`
 `;
 
 export const Tab: React.FC<TabsProps> = ({
+  type = "fixed",
   items,
   value,
   defaultValue,
@@ -97,8 +105,8 @@ export const Tab: React.FC<TabsProps> = ({
 
   return (
     <TabLayer className={className}>
-      <TabList type="fixed">
-        {items.map((item) => {
+      <TabList type={type}>
+        {items.map((item, key) => {
           const active = item.value === activeValue;
           const showLabel =
             configuration === "label" || configuration === "label-icon";
@@ -106,7 +114,7 @@ export const Tab: React.FC<TabsProps> = ({
             configuration === "icon" || configuration === "label-icon";
 
           return (
-            <TabItem active={active}>
+            <TabItem active={active} key={key}>
               <TabButton
                 active={active}
                 onClick={() => handleChange(item.value)}

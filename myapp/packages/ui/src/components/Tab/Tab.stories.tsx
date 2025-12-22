@@ -9,9 +9,23 @@ export default meta;
 
 type Story = StoryObj<typeof Tab>;
 
-export const Default: Story = {
+export const Fixed: Story = {
   render: () => (
     <Tab
+      type="fixed"
+      items={[
+        { value: "자바스크립트", label: "자바스크립트" },
+        { value: "프로젝트", label: "프로젝트" },
+        { value: "others", label: "others" },
+      ]}
+    />
+  ),
+};
+
+export const Scroll: Story = {
+  render: () => (
+    <Tab
+      type="scrollable"
       items={[
         { value: "자바스크립트", label: "자바스크립트" },
         { value: "프로젝트", label: "프로젝트" },

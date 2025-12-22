@@ -8,6 +8,7 @@ export interface TabItem {
 }
 
 export interface TabsProps {
+  type: TabType;
   items: TabItem[];
   value?: string;
   defaultValue?: string;
