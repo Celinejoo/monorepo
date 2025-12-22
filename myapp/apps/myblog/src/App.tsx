@@ -7,6 +7,7 @@ function App() {
         버튼
       </Button>
       <Tab
+        type="fixed"
         items={[
           { value: "자바스크립트", label: "자바스크립트" },
           { value: "프로젝트", label: "프로젝트" },

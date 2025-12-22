@@ -6,4 +6,4 @@ export * from "./Card";
 export * from "./Chip";
 export * from "./RowList";
 export * from "./Input";
-export * from "./Tab";
+export { Tab } from "./Tab";
