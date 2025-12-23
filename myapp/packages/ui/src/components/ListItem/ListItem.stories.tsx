@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from "@storybook/react";
-import { ListItem } from "./ListItem";
+import { ListItem } from "./Listitem";
 import { Chip } from "../Chip";
 import { Typography } from "../Typography";
 
