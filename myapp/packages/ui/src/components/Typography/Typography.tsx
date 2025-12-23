@@ -19,11 +19,11 @@ export const Typography = styled.p<TypographyProps>(
     fontFamily: `${typography.fontFamily.sans}`,
     margin: 0,
   },
+  ({ typography }) => typographyMap[typography],
   ({ display, textAlign, fontWeight, bold, color }) => ({
     display,
     textAlign,
     fontWeight: bold ? "bold" : fontWeight,
     color: colorPresetsMap[color as colorPresetsMap],
-  }),
-  ({ typography }) => typographyMap[typography]
+  })
 );
