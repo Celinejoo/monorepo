@@ -5,6 +5,6 @@ export * from "./FlexLayout";
 export * from "./Card";
 export * from "./Chip";
 export * from "./RowList";
-export * from "./Input";
+export * from "./TextField";
 export * from "./Tab";
 export * from "./ListItem";
