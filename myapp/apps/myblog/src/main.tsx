@@ -3,10 +3,13 @@ import { createRoot } from "react-dom/client";
 import { Global } from "@emotion/react";
 import App from "./App.tsx";
 import { globalReset } from "@repo/ui";
+import { BrowserRouter } from "react-router";
 
 createRoot(document.getElementById("root")!).render(
   <StrictMode>
     <Global styles={globalReset} />
-    <App />
+    <BrowserRouter>
+      <App />
+    </BrowserRouter>
   </StrictMode>
 );
