@@ -30,13 +30,13 @@ const Container = styled("div", {
 })<ContainerProps>(({ spacing: space, showDivider }) => ({
   margin: `0 ${spacing[space]}`,
   padding: `${spacing[space]} 0`,
-  borderBottom: showDivider ? `1px solid ${colors.gray[400]}` : undefined,
+  borderBottom: showDivider ? `1px solid ${colors.gray[200]}` : undefined,
 }));
 
 const ContentsWrap = styled.div`
   display: flex;
   flex-direction: column;
-  gap: 4px;
+  gap: 8px;
   flex: 1;
 `;
 
@@ -50,7 +50,7 @@ export const ListItem = ({
   spacing = 4,
 }: ListItemProps) => {
   const ContentWithTrailing = (
-    <FlexLayout direction="column" gap={8} alignItems="start">
+    <FlexLayout direction="column" gap={spacing} alignItems="start">
       <ContentsWrap>{contents}</ContentsWrap>
       {trailing && trailing}
     </FlexLayout>

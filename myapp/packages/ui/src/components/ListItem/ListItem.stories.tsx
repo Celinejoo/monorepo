@@ -1,8 +1,7 @@
 import type { Meta, StoryObj } from "@storybook/react";
 import { ListItem } from "./Listitem";
-import { Button } from "../Button";
+
 import { Typography } from "../Typography";
-import { FlexLayout } from "../FlexLayout";
 
 const meta: Meta<typeof ListItem> = {
   title: "Components/ListItem",
@@ -28,7 +27,7 @@ export const Defalut: Story = {
         }
       />
       <ListItem
-        spacing={4}
+        spacing={8}
         showDivider
         contents={
           <ListItem.Texts title="제목" subtitle="서브타이틀"></ListItem.Texts>
@@ -38,14 +37,6 @@ export const Defalut: Story = {
             <Typography typography="caption" color="textSubtle">
               날짜
             </Typography>
-            <FlexLayout justifyContent="end" style={{ width: "100%" }} gap={4}>
-              <Button variant="textButton" size="small">
-                수정
-              </Button>
-              <Button variant="textButton" size="small">
-                삭제
-              </Button>
-            </FlexLayout>
           </>
         }
       />
