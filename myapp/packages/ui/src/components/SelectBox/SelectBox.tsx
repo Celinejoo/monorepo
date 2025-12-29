@@ -2,7 +2,6 @@ import styled from "@emotion/styled";
 import { colors, spacing } from "@repo/tokens";
 import { useId, useState } from "react";
 import { Typography } from "../Typography";
-import { css } from "@emotion/react";
 
 interface OptionItem {
   value: string;
