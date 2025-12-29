@@ -3,11 +3,13 @@ import Home from "../pages/Home";
 import PostNew from "../pages/posts/PostNew";
 import PostDetail from "../pages/posts/PostDetail";
 import PostEdit from "../pages/posts/PostEdit";
+import Login from "../pages/Login";
 
 function Router() {
   return (
     <Routes>
       <Route path="/" element={<Home />} />
+      <Route path="/login" element={<Login />} />
       <Route path="/posts/new" element={<PostNew />} />
       <Route path="/posts/:id" element={<PostDetail />} />
       <Route path="/posts/edit/:id" element={<PostEdit />} />

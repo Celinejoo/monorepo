@@ -1,5 +1,5 @@
 import styled from "@emotion/styled";
-import { Button, FlexLayout, Tab, Typography } from "@repo/ui";
+import { Button, FlexLayout, ListItem, Tab, Typography } from "@repo/ui";
 
 function Home() {
   return (
@@ -31,6 +31,37 @@ function Home() {
           ]}
         />
       </FlexLayout>
+      <ListItem
+        spacing={8}
+        showDivider
+        contents={
+          <ListItem.Texts
+            title="데이터타입"
+            subtitle="데이터타입은 무엇인가요?"
+          ></ListItem.Texts>
+        }
+        trailing={
+          <>
+            <Typography typography="caption" color="textSubtle">
+              2025.12.23
+            </Typography>
+          </>
+        }
+      />
+      <ListItem
+        spacing={8}
+        showDivider
+        contents={
+          <ListItem.Texts title="제목" subtitle="서브타이틀"></ListItem.Texts>
+        }
+        trailing={
+          <>
+            <Typography typography="caption" color="textSubtle">
+              날짜
+            </Typography>
+          </>
+        }
+      />
     </InnerSection>
   );
 }
