@@ -1,5 +1,5 @@
 import { Typography } from "@repo/ui";
-import { PostForm } from "../../components/FostForm";
+import { PostForm } from "../../components/PostForm";
 import { InnerSection } from "../../components/InnerSection";
 import { Spacing } from "../../components/Spacing";
 

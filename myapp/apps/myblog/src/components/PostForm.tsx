@@ -2,10 +2,12 @@ import { Button, FlexLayout, SelectBox, TextField, Typography } from "@repo/ui";
 import { Spacing } from "./Spacing";
 
 import MDEditor from "@uiw/react-md-editor";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 import { useNavigate, useParams } from "react-router";
 import { useAddPost } from "../hooks/useAddPost";
+import { useGetPostId } from "../hooks/useGetPostId";
+import { useUpdatePost } from "../hooks/useUpdatePost";
 
 type FormErrors = {
   title?: string;
@@ -24,8 +26,11 @@ export type CategoryType = "자바스크립트" | "프로젝트" | "Other";
 
 export const PostForm = () => {
   const navigate = useNavigate();
+
   const { id } = useParams();
   const { mutate: addPost } = useAddPost();
+  const { mutate: updatePost } = useUpdatePost();
+  const { data: post } = useGetPostId(id);
   const [error, setErrors] = useState<FormErrors>({});
   const [title, setTitle] = useState("");
   const [summary, setSummary] = useState("");
@@ -57,22 +62,43 @@ export const PostForm = () => {
     if (!content) newErrors.content = "내용을 입력하세요";
 
     try {
-      addPost({
-        id: id ?? "",
-        title,
-        summary,
-        content,
-        createdAt: new Date()?.toLocaleString("ko", {
-          year: "numeric",
-          month: "2-digit",
-          day: "2-digit",
-        }),
-      });
-      navigate("/");
+      if (post && post.id) {
+        updatePost({
+          id: post.id,
+          data: {
+            title: title,
+            summary: summary,
+            content: content,
+            id: post.id,
+          },
+        });
+        navigate("/");
+      } else {
+        addPost({
+          id: id ?? "",
+          title,
+          summary,
+          content,
+          createdAt: new Date()?.toLocaleString("ko", {
+            year: "numeric",
+            month: "2-digit",
+            day: "2-digit",
+          }),
+        });
+        navigate("/");
+      }
     } catch (error) {
       console.log(error);
     }
   };
+
+  useEffect(() => {
+    if (post) {
+      setTitle(post.title);
+      setSummary(post.summary);
+      setContent(post.content);
+    }
+  }, [post]);
 
   return (
     <form onSubmit={handleSubmit}>
@@ -118,7 +144,7 @@ export const PostForm = () => {
       )}
       <Spacing y={48} />
       <FlexLayout justifyContent="center">
-        <Button variant="solid">등록,수정하기</Button>
+        <Button variant="solid">{post ? "수정하기" : "등록하기"}</Button>
       </FlexLayout>
     </form>
   );

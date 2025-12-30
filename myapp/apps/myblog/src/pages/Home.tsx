@@ -5,10 +5,23 @@ import { InnerSection } from "../components/InnerSection";
 import { useGetPost } from "../hooks/useGetPost";
 import { Timestamp } from "firebase/firestore";
 import { useNavigate } from "react-router";
+import { useContext } from "react";
+import AuthContext from "../context/AuthContext";
+import { useDeletePost } from "../hooks/useDeletePost";
 
 function Home() {
   const navigate = useNavigate();
+  const { user } = useContext(AuthContext);
   const { data: posts } = useGetPost();
+  const { mutate: deletePost } = useDeletePost();
+
+  const handleDelete = (id: string, e?: React.MouseEvent) => {
+    e?.stopPropagation();
+    const ok = window.confirm("삭제하시겠습니까?");
+    if (ok) {
+      deletePost(id);
+    }
+  };
 
   return (
     <>
@@ -51,10 +64,7 @@ function Home() {
                 spacing={8}
                 showDivider
                 contents={
-                  <ListItem.Texts
-                    title={item.title}
-                    subtitle={item.summary}
-                  ></ListItem.Texts>
+                  <ListItem.Texts title={item.title} subtitle={item.summary} />
                 }
                 trailing={
                   <>
@@ -67,6 +77,33 @@ function Home() {
                           })
                         : item.createdAt}
                     </Typography>
+                    {!!user && (
+                      <FlexLayout
+                        justifyContent="end"
+                        gap={12}
+                        style={{ width: "100%" }}
+                      >
+                        <Button
+                          variant="textButton"
+                          size="small"
+                          onClick={(e) => {
+                            e.stopPropagation();
+                            navigate(`/posts/edit/${item.id}`);
+                          }}
+                        >
+                          수정하기
+                        </Button>
+                        <Button
+                          variant="textButton"
+                          size="small"
+                          onClick={() => {
+                            if (item.id) handleDelete(item.id);
+                          }}
+                        >
+                          삭제하기
+                        </Button>
+                      </FlexLayout>
+                    )}
                   </>
                 }
               />
