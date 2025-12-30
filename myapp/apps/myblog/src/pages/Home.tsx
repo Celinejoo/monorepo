@@ -1,7 +1,7 @@
-import styled from "@emotion/styled";
 import { Button, FlexLayout, ListItem, Tab, Typography } from "@repo/ui";
 import { Spacing } from "../components/Spacing";
 import { Header } from "../components/Header";
+import { InnerSection } from "../components/InnerSection";
 
 function Home() {
   return (
@@ -70,7 +70,4 @@ function Home() {
   );
 }
 
-const InnerSection = styled.div`
-  margin: 60px 185px;
-`;
 export default Home;
