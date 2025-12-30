@@ -2,8 +2,10 @@ import { getAuth, onAuthStateChanged } from "firebase/auth";
 import Router from "./components/Router";
 import { app } from "../firebase";
 import { useEffect, useState } from "react";
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 
 function App() {
+  const queryClient = new QueryClient();
   const auth = getAuth(app);
   const [isAuth, setIsAuth] = useState(!!auth?.currentUser);
 
@@ -20,7 +22,11 @@ function App() {
     });
   }, [auth]);
 
-  return <Router isAuth={isAuth} />;
+  return (
+    <QueryClientProvider client={queryClient}>
+      <Router isAuth={isAuth} />
+    </QueryClientProvider>
+  );
 }
 
 export default App;

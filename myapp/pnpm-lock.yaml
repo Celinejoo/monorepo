@@ -32,6 +32,9 @@ importers:
       '@repo/ui':
         specifier: workspace:*
         version: link:../../packages/ui
+      '@tanstack/react-query':
+        specifier: ^5.90.15
+        version: 5.90.15(react@19.1.1)
       '@uiw/react-md-editor':
         specifier: ^4.0.7
         version: 4.0.11(@types/react@19.1.13)(react-dom@19.1.1)(react@19.1.1)
@@ -4827,6 +4830,19 @@ packages:
       '@types/babel__core': 7.20.5
       '@types/express': 4.17.23
       file-system-cache: 2.3.0
+
+  /@tanstack/query-core@5.90.15:
+    resolution: {integrity: sha512-mInIZNUZftbERE+/Hbtswfse49uUQwch46p+27gP9DWJL927UjnaWEF2t3RMOqBcXbfMdcNkPe06VyUIAZTV1g==}
+    dev: false
+
+  /@tanstack/react-query@5.90.15(react@19.1.1):
+    resolution: {integrity: sha512-uQvnDDcTOgJouNtAyrgRej+Azf0U5WDov3PXmHFUBc+t1INnAYhIlpZtCGNBLwCN41b43yO7dPNZu8xWkUFBwQ==}
+    peerDependencies:
+      react: ^18 || ^19
+    dependencies:
+      '@tanstack/query-core': 5.90.15
+      react: 19.1.1
+    dev: false
 
   /@types/babel__core@7.20.5:
     resolution: {integrity: sha512-qoQprZvz5wQFJwMDqeseRXWv3rqMvhgpbXFfVyWhbx9X47POIA6i/+dXefEmZKoAgOaTdaIgNSMqMIU61yRyzA==}
