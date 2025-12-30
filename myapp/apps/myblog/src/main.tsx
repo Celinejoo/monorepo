@@ -1,15 +1,15 @@
-import { StrictMode } from "react";
 import { createRoot } from "react-dom/client";
 import { Global } from "@emotion/react";
 import App from "./App.tsx";
 import { globalReset } from "@repo/ui";
 import { BrowserRouter } from "react-router";
+import { AuthContextProvider } from "./context/AuthContext.tsx";
 
 createRoot(document.getElementById("root")!).render(
-  <StrictMode>
+  <AuthContextProvider>
     <Global styles={globalReset} />
     <BrowserRouter>
       <App />
     </BrowserRouter>
-  </StrictMode>
+  </AuthContextProvider>
 );
