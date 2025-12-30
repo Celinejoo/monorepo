@@ -5,15 +5,32 @@ import PostDetail from "../pages/posts/PostDetail";
 import PostEdit from "../pages/posts/PostEdit";
 import Login from "../pages/Login";
 
-function Router() {
+interface RouterProps {
+  isAuth: boolean;
+}
+
+function Router({ isAuth }: RouterProps) {
+  // isAuth: true -> 로그인 한 상태
+
   return (
     <Routes>
-      <Route path="/" element={<Home />} />
-      <Route path="/login" element={<Login />} />
-      <Route path="/posts/new" element={<PostNew />} />
-      <Route path="/posts/:id" element={<PostDetail />} />
-      <Route path="/posts/edit/:id" element={<PostEdit />} />
-      <Route path="/*" element={<Navigate replace to="/" />} />
+      {isAuth ? (
+        <>
+          <Route path="/" element={<Home />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/posts/new" element={<PostNew />} />
+          <Route path="/posts/:id" element={<PostDetail />} />
+          <Route path="/posts/edit/:id" element={<PostEdit />} />
+          <Route path="/*" element={<Navigate replace to="/" />} />
+        </>
+      ) : (
+        <>
+          <Route path="/" element={<Home />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/posts/:id" element={<PostDetail />} />
+          <Route path="/*" element={<Navigate replace to="/" />} />
+        </>
+      )}
     </Routes>
   );
 }

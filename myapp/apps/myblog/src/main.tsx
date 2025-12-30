@@ -4,7 +4,6 @@ import { Global } from "@emotion/react";
 import App from "./App.tsx";
 import { globalReset } from "@repo/ui";
 import { BrowserRouter } from "react-router";
-import "../firebase";
 
 createRoot(document.getElementById("root")!).render(
   <StrictMode>
