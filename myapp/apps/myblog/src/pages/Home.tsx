@@ -2,8 +2,14 @@ import { Button, FlexLayout, ListItem, Tab, Typography } from "@repo/ui";
 import { Spacing } from "../components/Spacing";
 import { Header } from "../components/Header";
 import { InnerSection } from "../components/InnerSection";
+import { useGetPost } from "../hooks/useGetPost";
+import { Timestamp } from "firebase/firestore";
+import { useNavigate } from "react-router";
 
 function Home() {
+  const navigate = useNavigate();
+  const { data: posts } = useGetPost();
+
   return (
     <>
       <Header />
@@ -34,37 +40,38 @@ function Home() {
             ]}
           />
         </FlexLayout>
-        <ListItem
-          spacing={8}
-          showDivider
-          contents={
-            <ListItem.Texts
-              title="데이터타입"
-              subtitle="데이터타입은 무엇인가요?"
-            ></ListItem.Texts>
-          }
-          trailing={
-            <>
-              <Typography typography="caption" color="textSubtle">
-                2025.12.23
-              </Typography>
-            </>
-          }
-        />
-        <ListItem
-          spacing={8}
-          showDivider
-          contents={
-            <ListItem.Texts title="제목" subtitle="서브타이틀"></ListItem.Texts>
-          }
-          trailing={
-            <>
-              <Typography typography="caption" color="textSubtle">
-                날짜
-              </Typography>
-            </>
-          }
-        />
+        {posts &&
+          posts?.map((item, key) => {
+            return (
+              <ListItem
+                onClick={() => {
+                  navigate(`/posts/${item.id}`);
+                }}
+                key={key}
+                spacing={8}
+                showDivider
+                contents={
+                  <ListItem.Texts
+                    title={item.title}
+                    subtitle={item.summary}
+                  ></ListItem.Texts>
+                }
+                trailing={
+                  <>
+                    <Typography typography="caption" color="textSubtle">
+                      {item?.createdAt instanceof Timestamp
+                        ? item?.createdAt.toDate().toLocaleDateString("ko", {
+                            year: "numeric",
+                            month: "2-digit",
+                            day: "2-digit",
+                          })
+                        : item.createdAt}
+                    </Typography>
+                  </>
+                }
+              />
+            );
+          })}
       </InnerSection>
     </>
   );
