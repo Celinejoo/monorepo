@@ -36,15 +36,27 @@ const meta: Meta<typeof Paragraph> = {
 export default meta;
 type Story = StoryObj<typeof Paragraph>;
 
+export const 줄바꿈_테스트: Story = {
+  render: () => (
+    <>
+      <Paragraph typography="t2">{`동해물과
+    백두산이 
+    마르고 닳도록`}</Paragraph>
+      <div style={{ padding: "16px" }}></div>
+      <Paragraph typography="t2">동해물과 백두산이 마르고 닳도록</Paragraph>
+    </>
+  ),
+};
+
 export const DarkModeTest: Story = {
   render: (args) => (
     <>
-      <div data-theme="dark" style={{ padding: 16 }}>
-        <Paragraph {...args}>다크모드 텍스트</Paragraph>
+      <div data-theme="dark">
+        <Paragraph {...args}>다크모드 텍스트 pink500</Paragraph>
       </div>
 
-      <div style={{ padding: 16 }}>
-        <Paragraph {...args}>라이트모드 텍스트</Paragraph>
+      <div>
+        <Paragraph {...args}>라이트모드 텍스트 pink500</Paragraph>
       </div>
     </>
   ),

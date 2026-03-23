@@ -22,6 +22,7 @@ export interface ParagraphProps {
 export const Paragraph = styled.p<ParagraphProps>(
   {
     margin: 0,
+    whiteSpace: "pre-line",
   },
   ({ typography }) => typographyMap[typography],
   ({ fontWeight = "regular" }) => fontWeightMap[fontWeight],
