@@ -1,6 +1,6 @@
 export * from "./Button";
 export * from "./FloatingButton";
-export * from "./Typography";
+export * from "./Paragraph";
 export * from "./FlexLayout";
 export * from "./Card";
 export * from "./Chip";
