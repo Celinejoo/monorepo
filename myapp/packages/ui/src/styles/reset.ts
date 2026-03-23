@@ -1,20 +1,17 @@
 import { css } from "@emotion/react";
-import { typography } from "@repo/tokens";
 
 export const pretendardFont = css`
   @font-face {
     font-family: "Pretendard";
     src:
-      url("../font/subset-Pretendard-Regular.woff2") format(woff2),
-      url("../font/subset-Pretendard-Regular.woff") format(woff),
-      url("../font/subset-Pretendard-Regular.ttf") format(truetype);
+      url("/src/styles/font/subset-Pretendard-Regular.woff2") format(woff2),
+      url("/src/styles/font/subset-Pretendard-Regular.woff") format(woff),
+      url("/src/styles/font/subset-Pretendard-Regular.ttf") format(truetype);
     font-display: fallback;
   }
 `;
 
 export const globalReset = css`
-  ${pretendardFont}
-
   * {
     box-sizing: border-box;
     margin: 0;
@@ -26,10 +23,7 @@ export const globalReset = css`
   }
 
   body {
-    line-height: 1.5;
-    font-family: ${typography.fontFamily.sans.join(", ")};
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
+    font-family: Pretendard;
   }
 
   html,
@@ -117,7 +111,6 @@ export const globalReset = css`
     padding: 0;
     border: 0;
     font-size: 100%;
-    font: inherit;
     vertical-align: baseline;
   }
 
