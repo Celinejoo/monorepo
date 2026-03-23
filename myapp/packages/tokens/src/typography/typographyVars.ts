@@ -1,14 +1,3 @@
-export const fontFamily = {
-  sans: [
-    "Pretendard",
-    "-apple-system",
-    "BlinkMacSystemFont",
-    "system-ui",
-    "sans-serif",
-  ],
-  mono: ["JetBrains Mono", "Menlo", "monospace"],
-};
-
 export const fontSize = {
   30: "1.875rem",
   24: "1.5rem",
