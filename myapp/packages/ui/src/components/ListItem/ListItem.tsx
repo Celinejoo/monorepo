@@ -1,89 +1,108 @@
+import { css } from "@emotion/react";
 import styled from "@emotion/styled";
-import { FlexLayout } from "../FlexLayout";
-import { Typography } from "../Typography";
-import { colors, spacing } from "@repo/tokens";
+import { Paragraph } from "../Paragraph";
+import { Flex } from "../FlexLayout";
+import { Border } from "../Border/Border";
 
-type SpacingKey = keyof typeof spacing;
-
-interface ListItemProps {
-  leading?: React.ReactNode;
-  contents: React.ReactNode;
-  trailing?: React.ReactNode;
+export interface ListProps {
+  children: React.ReactNode;
   showDivider?: boolean;
   onClick?: () => void;
   as?: "div" | "li";
-  spacing?: SpacingKey;
+  padding?: "16" | "24";
+  margin?: number;
+  gap?: number;
 }
 
-interface ContainerProps {
-  showDivider?: boolean;
-  spacing: SpacingKey;
+export interface LeadingProps {
+  children: React.ReactNode;
+}
+export interface TrailingProps {
+  children: React.ReactNode;
 }
 
-interface ContentsTextProps {
+export interface ContentsTextProps {
   title: string;
   subtitle?: string;
 }
 
-const Container = styled("div", {
-  shouldForwardProp: (prop) => !["showDivider", "spacing"].includes(prop),
-})<ContainerProps>(({ spacing: space, showDivider }) => ({
-  margin: `0 ${spacing[space]}`,
-  padding: `${spacing[space]} 0`,
-  borderBottom: showDivider ? `1px solid ${colors.gray[200]}` : undefined,
-}));
+const StyledList = styled.div<ListProps>(
+  {
+    display: "flex",
+    flexDirection: "row",
+    alignItems: "center",
+    gap: "8px",
+  },
+  ({ gap = 24 }) =>
+    gap &&
+    css`
+      gap: 0 ${gap}px;
+    `,
+  ({ padding = 24 }) =>
+    padding &&
+    css`
+      padding: 0 ${padding}px;
+    `,
+  ({ margin }) =>
+    margin &&
+    css`
+      margin: ${margin}px 0;
+    `,
+);
 
-const ContentsWrap = styled.div`
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-  flex: 1;
-`;
-
-export const ListItem = ({
+const ListBase = ({
   onClick,
   as,
-  leading,
-  trailing,
-  contents,
+  children,
   showDivider,
-  spacing = 4,
-}: ListItemProps) => {
-  const ContentWithTrailing = (
-    <FlexLayout direction="column" gap={spacing} alignItems="start">
-      <ContentsWrap>{contents}</ContentsWrap>
-      {trailing && trailing}
-    </FlexLayout>
-  );
-
-  return (
-    <Container
-      as={as}
+  padding,
+  margin,
+}: ListProps) => (
+  <>
+    <StyledList
       onClick={onClick}
+      as={as}
       showDivider={showDivider}
-      spacing={spacing}
+      padding={padding}
+      margin={margin}
     >
-      {leading ? (
-        <FlexLayout alignItems="center" gap={12}>
-          {leading}
-          {ContentWithTrailing}
-        </FlexLayout>
-      ) : (
-        ContentWithTrailing
-      )}
-    </Container>
+      {children}
+    </StyledList>
+    {showDivider && <Border varient="padding24" />}
+  </>
+);
+
+const Leading = ({ children }: LeadingProps) => {
+  return <div>{children}</div>;
+};
+
+const Trailing = ({ children }: TrailingProps) => {
+  return <div style={{ marginLeft: "auto" }}>{children}</div>;
+};
+
+const Contents = ({ title, subtitle }: ContentsTextProps) => {
+  return (
+    <Flex direction="column" gap={4}>
+      <Flex.Item>
+        <Paragraph typography="sub2" fontWeight="bold">
+          {title}
+        </Paragraph>
+      </Flex.Item>
+      <Flex.Item>
+        <Paragraph typography="sub3">{subtitle}</Paragraph>
+      </Flex.Item>
+    </Flex>
   );
 };
 
-function ContentsText({ title, subtitle }: ContentsTextProps) {
-  return (
-    <>
-      <Typography typography="bodyL" color="text" fontWeight="bold">
-        {title}
-      </Typography>
-      <Typography typography="bodyS">{subtitle}</Typography>
-    </>
-  );
+interface ListCompoundComponent extends React.FC<ListProps> {
+  Leading: React.FC<LeadingProps>;
+  Contents: React.FC<ContentsTextProps>;
+  Trailing: React.FC<TrailingProps>;
 }
 
-ListItem.Texts = ContentsText;
+export const List: ListCompoundComponent = Object.assign(ListBase, {
+  Leading: Leading,
+  Contents: Contents,
+  Trailing: Trailing,
+});
