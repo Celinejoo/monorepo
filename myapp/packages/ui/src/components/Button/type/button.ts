@@ -1,91 +1,71 @@
 import { css } from "@emotion/react";
-import { borderRadius, colors, typography } from "@repo/tokens";
 
 export const buttonSizeMap = {
   small: css`
-    font-size: ${typography.fontSize.sm};
+    font-size: var(--font-size-14);
     padding: 6px 12px;
-    height: 32px;
-    border-radius: ${borderRadius.base};
+    border-radius: 4px;
   `,
   medium: css`
-    font-size: ${typography.fontSize.base};
+    font-size: var(--font-size-16);
     padding: 8px 16px;
-    height: 40px;
-    border-radius: ${borderRadius.md};
+    border-radius: 8px;
   `,
   large: css`
-    font-size: ${typography.fontSize.lg};
+    font-size: var(--font-size-18);
     padding: 12px 20px;
-    height: 48px;
-    border-radius: ${borderRadius.lg};
+    border-radius: 12px;
+  `,
+
+  xlarge: css`
+    font-size: var(--font-size-20);
+    padding: 12px 20px;
+    border-radius: 16px;
   `,
 } as const;
+
+export const buttonColorMap = {
+  primary: css`
+    --button-color: 59, 130, 246;
+    --button-bg-weak: 219, 234, 254;
+    --button-text-color: 255, 255, 255;
+  `,
+  danger: css`
+    --button-color: 239, 68, 68;
+    --button-bg-weak: 254, 226, 226;
+    --button-text-color: 255, 255, 255;
+  `,
+  light: css`
+    --button-color: 249, 250, 251;
+    --button-bg-weak: 219, 231, 235;
+    --button-text-color: 59, 130, 246;
+  `,
+  dark: css`
+    --button-color: 55, 65, 81;
+    --button-bg-weak: 229, 231, 235;
+    --button-text-color: 255, 255, 255;
+  `,
+  text: css`
+    padding: 0;
+    background: none;
+    --button-text-color: 107, 114, 128;
+    &: hover {
+      text-decoration: underline;
+    }
+  `,
+};
 
 export const buttonVariantMap = {
-  solid: css`
-    background-color: ${colors.primary[500]};
-    color: ${colors.ui.surface};
-    border: none;
-    &:hover {
-      background-color: ${colors.primary[700]};
-    }
-    &:active {
-      background-color: ${colors.primary[700]};
-    }
+  fill: css`
+    background-color: rgb(var(--button-color));
+    color: rgb(var(--button-text-color));
   `,
-  outline: css`
-    border: 1px solid ${colors.primary[500]};
-    color: ${colors.primary[500]};
-    background-color: ${colors.ui.surface};
-    &:hover {
-      background-color: ${colors.primary[700]};
-      border: none;
-    }
-    &:active {
-      background-color: ${colors.primary[700]};
-      border: none;
-    }
+  weak: css`
+    background-color: rgb(var(--button-bg-weak));
+    color: rgb(var(--button-text-weak, var(--button-color)));
   `,
-  gray: css`
-    background-color: ${colors.gray[500]};
-    color: ${colors.ui.surface};
-    border: none;
-    &:hover {
-      background-color: ${colors.gray[700]};
-    }
-    &:active {
-      background-color: ${colors.gray[700]};
-    }
-  `,
-  grayOutline: css`
-    background-color: ${colors.ui.surface};
-    color: ${colors.gray[500]};
-    border: 1px solid ${colors.gray[500]};
-    &:hover {
-      background-color: ${colors.gray[700]};
-      color: ${colors.ui.surface};
-      border: none;
-    }
-    &:active {
-      background-color: ${colors.gray[700]};
-      color: ${colors.ui.surface};
-      border: none;
-    }
-  `,
+};
 
-  textButton: css`
-    background: none;
-    padding: 0;
-    color: ${colors.gray[500]};
-    &:hover {
-      text-decoration: underline;
-    }
-    &:active {
-      text-decoration: underline;
-    }
-  `,
-} as const;
-
-export type buttonSizeMap = keyof typeof buttonSizeMap;
-export type buttonVariantMap = keyof typeof buttonVariantMap;
+export type ButtonSize = keyof typeof buttonSizeMap;
+export type ButtonVariant = keyof typeof buttonVariantMap;
+export type ButtonColor = keyof typeof buttonColorMap;

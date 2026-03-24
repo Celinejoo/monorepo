@@ -1,41 +1,57 @@
 import styled from "@emotion/styled";
 import type { ReactNode } from "react";
-import { buttonSizeMap, buttonVariantMap } from "./type/button";
+import {
+  ButtonColor,
+  buttonColorMap,
+  ButtonSize,
+  buttonSizeMap,
+  ButtonVariant,
+  buttonVariantMap,
+} from "./type/button";
 import { css } from "@emotion/react";
-import { typography } from "@repo/tokens";
 
 export interface ButtonProps {
   children: ReactNode;
-  variant?: buttonVariantMap;
-  size?: buttonSizeMap;
-  full?: boolean;
+  color: ButtonColor;
+  variant: ButtonVariant;
+  size: ButtonSize;
+  display?: "inline" | "block" | "full";
   disabled?: boolean;
 }
 
 export const Button = styled.button<ButtonProps>(
   {
+    justifyContent: "center",
     cursor: "pointer",
-    fontFamily: `${typography.fontFamily.sans}`,
     border: "none",
+    textAlign: "center",
     transition: "all ease 0.2s",
     "&:active:not(:disabled)": {
       transform: "scale(0.97)",
     },
   },
-  ({ size = "medium" }) => buttonSizeMap[size],
-  ({ variant = "solid" }) => buttonVariantMap[variant],
-  ({ full }) =>
-    full
+  ({ display }) =>
+    display === "full"
       ? css`
           width: 100%;
-          display: block;
+          justify-content: center;
         `
-      : undefined,
+      : display === "block"
+        ? css`
+            display: flex;
+          `
+        : css`
+            display: inline-flex;
+          `,
+
+  ({ color }) => buttonColorMap[color],
+  ({ variant }) => buttonVariantMap[variant],
+  ({ size = "medium" }) => buttonSizeMap[size],
   ({ disabled }) =>
     disabled
       ? css`
           opacity: 0.5;
           cursor: not-allowed;
         `
-      : undefined
+      : undefined,
 );

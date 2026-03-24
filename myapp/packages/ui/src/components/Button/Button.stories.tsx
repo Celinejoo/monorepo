@@ -4,16 +4,24 @@ import { Button } from "./Button";
 const meta: Meta<typeof Button> = {
   title: "Components/Button",
   component: Button,
+  tags: ["autodocs"],
   argTypes: {
     variant: {
       control: { type: "radio" },
-      options: ["solid", "outline", "gray", "grayOutline", "textButton"],
+      options: ["fill", "weak"],
     },
     size: {
       control: { type: "radio" },
-      options: ["small", "medium", "large"],
+      options: ["small", "medium", "large", "xlarge"],
     },
-    full: { control: "boolean" },
+    color: {
+      control: { type: "radio" },
+      options: ["primary", "danger", "light", "dark", "text"],
+    },
+    display: {
+      control: { type: "radio" },
+      options: ["block", "inline", "full"],
+    },
     disabled: { control: "boolean" },
   },
 };
@@ -21,23 +29,35 @@ export default meta;
 
 type Story = StoryObj<typeof Button>;
 
-export const Solid: Story = { args: { children: "Solid", variant: "solid" } };
-
-export const Outline: Story = {
-  args: { children: "Outline", variant: "outline" },
+export const 버튼: Story = {
+  args: {
+    children: "버튼",
+    variant: "fill",
+    color: "primary",
+    size: "medium",
+    disabled: false,
+    display: "inline",
+  },
 };
 
-export const Gray: Story = {
-  args: { children: "Gray", variant: "gray" },
+export const 텍스트버튼: Story = {
+  args: {
+    children: "텍스트버튼",
+    variant: "fill",
+    color: "text",
+    size: "medium",
+    disabled: false,
+    display: "inline",
+  },
 };
 
-export const GrayOutline: Story = {
-  args: { children: "GrayOutline", variant: "grayOutline" },
-};
-
-export const textButton: Story = {
-  args: { children: "textbutton", variant: "textButton" },
-};
-export const Disabled: Story = {
-  args: { children: "Outline", variant: "outline", disabled: true },
+export const Dark: Story = {
+  args: {
+    children: "접근성 관련 추가 ",
+    variant: "fill",
+    color: "text",
+    size: "medium",
+    disabled: false,
+    display: "inline",
+  },
 };
