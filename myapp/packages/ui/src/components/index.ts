@@ -3,7 +3,7 @@ export * from "./FloatingButton";
 export * from "./Paragraph";
 export * from "./FlexLayout";
 export * from "./Card";
-export * from "./Chip";
+export * from "./Badge";
 export * from "./RowList";
 export * from "./TextField";
 export * from "./Tab";
