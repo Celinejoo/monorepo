@@ -88,9 +88,11 @@ const Contents = ({ title, subtitle }: ContentsTextProps) => {
           {title}
         </Paragraph>
       </Flex.Item>
-      <Flex.Item>
-        <Paragraph typography="sub3">{subtitle}</Paragraph>
-      </Flex.Item>
+      {subtitle && (
+        <Flex.Item>
+          <Paragraph typography="sub3">{subtitle}</Paragraph>
+        </Flex.Item>
+      )}
     </Flex>
   );
 };
