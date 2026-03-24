@@ -1,64 +1,72 @@
 import { css } from "@emotion/react";
 import styled from "@emotion/styled";
-import { borderRadius, colors, spacing } from "@repo/tokens";
-import { Typography } from "../Typography";
+import {
+  backgroundPresetsMap,
+  BackgroundPresetsMap,
+} from "../../utils/generateBackground";
 
 export interface CardProps {
   onClick?: () => void;
   as?: "div" | "li";
   outlined?: boolean;
+  background?: BackgroundPresetsMap;
   children?: React.ReactNode;
 }
 
-interface CardHeaderProps {
-  title?: string;
-}
-
-interface CardContentsProps {
+export interface CardHeaderProps {
   children?: React.ReactNode;
 }
 
-export const CardBase = ({ onClick, as, outlined, children }: CardProps) => (
-  <Container onClick={onClick} as={as} outlined={outlined}>
-    {children}
-  </Container>
-);
+export interface CardContentsProps {
+  children?: React.ReactNode;
+}
 
-const Container = styled.div<CardProps>(
+const StyledCard = styled.div<CardProps>(
   {
-    padding: `${spacing[4]}`,
-    borderRadius: `${borderRadius.xl}`,
+    padding: "18px 24px",
+    borderRadius: "18px",
     transition: "all ease 0.2s",
     "&:active": {
       transform: "scale(0.99)",
     },
   },
+  ({ background = "gray100" }) => backgroundPresetsMap[background],
   ({ outlined }) =>
-    outlined
-      ? css`
-          border: 1px solid ${colors.gray[400]};
-          background: ${colors.gray[100]};
-        `
-      : css`
-          background: ${colors.gray[100]};
-        `
+    outlined &&
+    css`
+      border: 1px solid;
+      border-color: var(--color-gray-400);
+    `,
 );
 
-const CardHeader = ({ title }: CardHeaderProps) => {
-  return (
-    <StyledCardHeader>
-      <Typography typography="bodyL">{title}</Typography>
-    </StyledCardHeader>
-  );
-};
+const CardBase = ({
+  onClick,
+  as,
+  outlined,
+  children,
+  background,
+}: CardProps) => (
+  <StyledCard
+    onClick={onClick}
+    as={as}
+    outlined={outlined}
+    background={background}
+  >
+    {children}
+  </StyledCard>
+);
 
 const StyledCardHeader = styled.div`
   margin-bottom: 8px;
 `;
 
-interface CardContentsProps {
-  children?: React.ReactNode;
-}
+const CardHeader = ({ children }: CardHeaderProps) => {
+  return (
+    <StyledCardHeader>
+      <div>{children}</div>
+    </StyledCardHeader>
+  );
+};
 
 const CardContents = ({ children }: CardContentsProps) => {
   return <div>{children}</div>;
@@ -73,5 +81,3 @@ export const Card: CardCompoundComponent = Object.assign(CardBase, {
   Header: CardHeader,
   Contents: CardContents,
 });
-
-export default Card;
