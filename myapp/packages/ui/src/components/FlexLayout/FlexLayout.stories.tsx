@@ -1,21 +1,36 @@
 import type { Meta, StoryObj } from "@storybook/react";
-import { FlexLayout } from "./FlexLayout";
-import { Button } from "../Button/";
-
-const meta: Meta<typeof FlexLayout> = {
+import { Flex } from "./FlexLayout";
+import { Card } from "../Card";
+const meta: Meta<typeof Flex> = {
   title: "Components/Layout/FlexLayout",
-  component: FlexLayout,
+  component: Flex,
 };
 export default meta;
 
-type Story = StoryObj<typeof FlexLayout>;
+type Story = StoryObj<typeof Flex>;
 
-export const 플렉스: Story = {
+export const Column: Story = {
   render: () => (
-    <FlexLayout direction="row" alignItems="center" gap={8}>
-      <Button>Flex</Button>
-      <Button>Layout</Button>
-      <Button>Component</Button>
-    </FlexLayout>
+    <Flex direction="column" gap={12} alignItems="center">
+      <Flex.Item>
+        <Card>아이템1</Card>
+      </Flex.Item>
+      <Flex.Item>
+        <Card>아이템2</Card>
+      </Flex.Item>
+    </Flex>
+  ),
+};
+
+export const Row: Story = {
+  render: () => (
+    <Flex direction="row" gap={12} alignItems="center">
+      <Flex.Item>
+        <Card>아이템1</Card>
+      </Flex.Item>
+      <Flex.Item>
+        <Card>아이템2</Card>
+      </Flex.Item>
+    </Flex>
   ),
 };
