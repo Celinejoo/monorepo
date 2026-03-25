@@ -1,6 +1,6 @@
 import styled from "@emotion/styled";
-import { FlexLayout } from "../FlexLayout";
-import { Typography } from "../Typography";
+import { Flex } from "../FlexLayout";
+import { Paragraph } from "../Paragraph";
 
 export interface RowListProps {
   left?: React.ReactNode;
@@ -21,20 +21,25 @@ export const RowList = ({
 }: RowListProps) => {
   return (
     <Container as={as} onClick={onClick}>
-      <FlexLayout alignItems="center">
+      <Flex alignItems="center" gap={8}>
         {left && left}
-        <FlexLayout style={{ flex: 1, margin: "0 12px" }}>
-          {contents}
-        </FlexLayout>
+        {contents}
         {right && right}
         {withArrow ? <Arrow /> : null}
-      </FlexLayout>
+      </Flex>
     </Container>
   );
 };
 
 const Container = styled.div`
   padding: 8px 24px;
+`;
+
+const FlexShrink = styled.div`
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  gap: 4px;
 `;
 
 function RowListText({
@@ -45,12 +50,12 @@ function RowListText({
   subTitle?: React.ReactNode;
 }) {
   return (
-    <FlexLayout direction="column">
-      <Typography typography="bodyL" fontWeight="500">
+    <FlexShrink>
+      <Paragraph typography="sub1" fontWeight="semibold">
         {title}
-      </Typography>
-      <Typography typography="bodyS">{subTitle}</Typography>
-    </FlexLayout>
+      </Paragraph>
+      {subTitle && <Paragraph typography="sub2">{subTitle}</Paragraph>}
+    </FlexShrink>
   );
 }
 

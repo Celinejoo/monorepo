@@ -2,7 +2,7 @@ import type { Meta, StoryObj } from "@storybook/react";
 import { Flex } from "./FlexLayout";
 import { Card } from "../Card";
 const meta: Meta<typeof Flex> = {
-  title: "Components/Layout/FlexLayout",
+  title: "Components/Flex",
   component: Flex,
 };
 export default meta;
