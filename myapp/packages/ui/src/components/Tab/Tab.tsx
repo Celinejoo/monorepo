@@ -1,15 +1,29 @@
+import { useState } from "react";
 import styled from "@emotion/styled";
 
-import { TabsProps, TabType } from "./type/tab";
-import { colors } from "@repo/tokens";
 import { css } from "@emotion/react";
-import { useState } from "react";
-import { Typography } from "../Typography";
+import { Paragraph } from "../Paragraph";
+import { Flex } from "../FlexLayout";
 
-export const TabLayer = styled.div`
-  display: flex;
-  flex-direction: column;
-`;
+export type TabType = "fixed" | "scrollable";
+export type TabSize = "small" | "large";
+export type TabConfiguration = "label" | "icon" | "label-icon";
+
+export interface TabsProps {
+  type: TabType;
+  items: TabItem[];
+
+  value?: string;
+  defaultValue?: string;
+  onChange?: (value: string) => void;
+  configuration?: TabConfiguration;
+}
+
+export interface TabItem {
+  value: string;
+  label?: string;
+  icon?: React.ReactNode;
+}
 
 export const TabList = styled.ul<{ type: TabType }>`
   display: flex;
@@ -20,80 +34,69 @@ export const TabList = styled.ul<{ type: TabType }>`
     type === "scrollable" &&
     css`
       overflow-x: auto;
+
       &::-webkit-scrollbar {
         height: 4px;
-      }
-      > li {
-        width: auto;
-      }
-    `}
-
-  ${({ type }) =>
-    type === "fixed" &&
-    css`
-      > li {
-        width: 120px;
-      }
-    `}
-    ${({ type }) =>
-    type === "scrollable" &&
-    css`
-      > li {
-        padding: 14px 8px;
       }
     `}
 `;
 
 export const TabItem = styled.li<{
   active: boolean;
+  type: TabType;
 }>`
+  flex: 1 1 0;
   padding: 14px 0;
   position: relative;
   border-bottom: 1px solid;
-  ${({ active }) =>
-    active
-      ? css`
-          border-bottom: 2px inset;
-          border-color: ${colors.gray[700]};
-        `
-      : css`
-          border-color: ${colors.gray[400]};
-        `}
-`;
-
-export const TabButton = styled.button<{
-  active: boolean;
-}>`
+  border-color: var(--color-gray-400);
   ${({ active }) =>
     active &&
     css`
-      > span {
-        font-weight: 700;
-      }
+      border-bottom: 2px inset;
+      border-color: var(--color-gray-700);
+    `}
+  ${({ type }) =>
+    type === "scrollable" &&
+    css`
+      white-space: nowrap;
+      padding: 14px 8px;
+      flex: 0 0 auto;
+      width: auto;
     `}
 `;
 
-const Label = ({ children }: { children: React.ReactNode }) => (
-  <Typography typography="body" as="span">
-    {children}
-  </Typography>
-);
-
 const IconWrap = styled.span`
   line-height: 0;
+  display: inline-block;
   width: 20px;
-  heiht: 20px;
+  height: 20px;
 `;
 
-export const Tab: React.FC<TabsProps> = ({
+const Label = ({
+  children,
+  active,
+}: {
+  children: React.ReactNode;
+  active: boolean;
+}) => (
+  <Paragraph
+    typography="sub2"
+    as="span"
+    fontWeight={active ? "bold" : "regular"}
+  >
+    {children}
+  </Paragraph>
+);
+
+export const Tab = ({
   type = "fixed",
   items,
   value,
   defaultValue,
   onChange,
   configuration = "label",
-  className,
-}) => {
+}: TabsProps) => {
   const [innerValue, setInnerValue] = useState(defaultValue ?? items[0]?.value);
   const isControlled = value !== undefined;
   const activeValue = isControlled ? value : innerValue;
@@ -104,9 +107,9 @@ export const Tab: React.FC<TabsProps> = ({
   };
 
   return (
-    <TabLayer className={className}>
+    <Flex direction="column">
       <TabList type={type}>
-        {items.map((item, key) => {
+        {items.map((item, value) => {
           const active = item.value === activeValue;
           const showLabel =
             configuration === "label" || configuration === "label-icon";
@@ -114,18 +117,33 @@ export const Tab: React.FC<TabsProps> = ({
             configuration === "icon" || configuration === "label-icon";
 
           return (
-            <TabItem active={active} key={key}>
-              <TabButton
-                active={active}
-                onClick={() => handleChange(item.value)}
-              >
+            <TabItem active={active} key={value} type={type}>
+              <button onClick={() => handleChange(item.value)}>
                 {showIcon && <IconWrap>{item.icon}</IconWrap>}
-                {showLabel && <Label>{item.label}</Label>}
-              </TabButton>
+                {showLabel && <Label active={active}>{item.label}</Label>}
+              </button>
             </TabItem>
           );
         })}
       </TabList>
-    </TabLayer>
+    </Flex>
   );
 };
+
+/* <Tab type ='fixed' size>
+  <Tab.Item/> 
+   <Tab.Item/> 
+</Tab> */
+/*  
+
+<div> Tab
+<ul> ---> 스크롤 되어야하는 부분
+
+  <li><button>아이콘, 텍스트</button></li> Tab.Item
+  <li><button>아이콘, 텍스트</button></li> 
+  <li><button>아이콘, 텍스트</button></li>
+</ul>
+
+</div>
+
+*/
