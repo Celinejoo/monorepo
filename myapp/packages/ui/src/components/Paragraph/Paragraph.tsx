@@ -24,7 +24,7 @@ export const Paragraph = styled.p<ParagraphProps>(
     margin: 0,
     whiteSpace: "pre-line",
   },
-  ({ typography }) => typographyMap[typography],
+  ({ typography = "sub2" }) => typographyMap[typography],
   ({ fontWeight = "regular" }) => fontWeightMap[fontWeight],
   ({ color = "gray700" }) => colorPresetsMap[color],
   ({ display, textAlign }) => ({

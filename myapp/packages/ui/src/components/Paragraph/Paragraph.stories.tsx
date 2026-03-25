@@ -5,63 +5,141 @@ const meta: Meta<typeof Paragraph> = {
   title: "Components/Paragraph",
   component: Paragraph,
   tags: ["autodocs"],
-  argTypes: {
-    typography: {
-      control: "radio",
-      options: ["t1", "t2", "t3", "t4", "sub1", "sub2", "sub3", "sub4"],
-    },
-    color: {
-      control: "radio",
-      options: ["gray700", "pink500"],
-    },
-    display: {
-      control: "radio",
-      options: ["block", "inline-block", "inline"],
-    },
-    textAlign: {
-      control: "radio",
-      options: ["right", "left", "center"],
-    },
-    fontWeight: {
-      control: "radio",
-      options: ["light", "regular", "medium", "semibold", "bold"],
+  parameters: {
+    layout: "padded",
+    docs: {
+      description: {
+        component:
+          "텍스트를 표시하기 위한 기본 컴포넌트입니다. `typography`, `color`, `fontWeight`, `textAlign` 등의 속성으로 스타일을 제어할 수 있으며, `as` prop으로 렌더링 태그를 변경할 수 있습니다.",
+      },
     },
   },
   args: {
     typography: "sub2",
     color: "gray700",
+    fontWeight: "regular",
+    textAlign: "left",
+    display: "block",
+    as: "p",
+  },
+  argTypes: {
+    typography: {
+      control: "radio",
+      description: "텍스트의 크기와 계층을 설정합니다.",
+      options: ["t1", "t2", "t3", "t4", "sub1", "sub2", "sub3", "sub4"],
+    },
+    color: {
+      control: "radio",
+      description:
+        "텍스트 색상을 설정합니다. 디자인 토큰에 정의된 컬러 값을 사용할 수 있습니다.",
+      options: ["gray700", "gry500", "pink500", "red500"],
+    },
+    display: {
+      control: "radio",
+      description: "텍스트 요소의 display 속성을 설정합니다.",
+      options: ["block", "inline-block", "inline"],
+    },
+    textAlign: {
+      control: "radio",
+      description: "텍스트 정렬을 설정합니다.",
+      options: ["left", "center", "right"],
+    },
+    fontWeight: {
+      control: "radio",
+      description: "텍스트 굵기를 설정합니다.",
+      options: ["light", "regular", "medium", "semibold", "bold"],
+    },
   },
 };
 
 export default meta;
+
 type Story = StoryObj<typeof Paragraph>;
 
-export const 줄바꿈_테스트: Story = {
-  render: () => (
+export const Overview: Story = {
+  name: "기본 예시",
+  render: (args) => (
     <>
-      <Paragraph typography="t2">{`동해물과
-    백두산이 
-    마르고 닳도록`}</Paragraph>
-      <div style={{ padding: "16px" }}></div>
-      <Paragraph typography="t2">동해물과 백두산이 마르고 닳도록</Paragraph>
+      <Paragraph {...args}>
+        Controls를 통해 Paragraph의 주요 속성을 변경해볼 수 있습니다.
+      </Paragraph>
+      <Paragraph typography="t2" as="p">
+        텍스트를 표시하기 위한 기본 컴포넌트입니다.
+      </Paragraph>
+      <Paragraph typography="sub2" as="span" display="inline">
+        as prop을 사용하면 렌더링되는 HTML 태그를 유연하게 변경할 수 있습니다.
+      </Paragraph>
     </>
   ),
 };
 
-export const DarkModeTest: Story = {
+export const Typography: Story = {
+  name: "Typography",
   render: (args) => (
     <>
-      <div data-theme="dark">
-        <Paragraph {...args}>다크모드 텍스트 pink500</Paragraph>
-      </div>
-
-      <div>
-        <Paragraph {...args}>라이트모드 텍스트 pink500</Paragraph>
-      </div>
+      <Paragraph {...args} typography="t1">
+        t1 텍스트
+      </Paragraph>
+      <Paragraph {...args} typography="t2">
+        t2 텍스트
+      </Paragraph>
+      <Paragraph {...args} typography="t3">
+        t3 텍스트
+      </Paragraph>
+      <Paragraph {...args} typography="t4">
+        t4 텍스트
+      </Paragraph>
+      <Paragraph {...args} typography="sub1">
+        sub1 텍스트
+      </Paragraph>
+      <Paragraph {...args} typography="sub2">
+        sub2 텍스트
+      </Paragraph>
+      <Paragraph {...args} typography="sub3">
+        sub3 텍스트
+      </Paragraph>
+      <Paragraph {...args} typography="sub4">
+        sub4 텍스트
+      </Paragraph>
     </>
   ),
-  args: {
-    typography: "t1",
-    color: "pink500",
-  },
+};
+
+export const Usage: Story = {
+  name: "사용 예시",
+  render: () => (
+    <>
+      <Paragraph typography="t2">
+        Paragraph 컴포넌트는 텍스트를 표시하는 데 사용됩니다.
+      </Paragraph>
+
+      <Paragraph typography="t2" as="span" display="inline">
+        as prop을 사용하면 의미에 맞는 태그로 렌더링할 수 있습니다.
+      </Paragraph>
+
+      <Paragraph typography="t2" fontWeight="bold">
+        굵은 텍스트 예시
+      </Paragraph>
+
+      <Paragraph typography="sub2" fontWeight="light">
+        얇은 텍스트 예시
+      </Paragraph>
+    </>
+  ),
+};
+
+export const DarkMode: Story = {
+  name: "Dark Mode",
+  render: () => (
+    <>
+      <div data-theme="dark">
+        <Paragraph typography="t2" color="pink500">
+          다크 모드에서의 pink500 텍스트 예시입니다.
+        </Paragraph>
+      </div>
+      <Paragraph typography="t2" color="pink500">
+        라이트 모드에서의 pink500 텍스트 예시입니다.
+      </Paragraph>
+    </>
+  ),
 };
