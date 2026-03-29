@@ -1,4 +1,4 @@
-import{j as n,a as l,c as w}from"./emotion-react.browser.esm-Cemqn3pj.js";import{s as u}from"./emotion-styled.browser.esm-C4boggRP.js";import{P as p}from"./Paragraph-BwzewXIu.js";import{r as i}from"./index-ZKl5n0xc.js";import"./emotion-use-insertion-effect-with-fallbacks.browser.esm-Bhc8sTDk.js";import"./extends-CF3RwP-h.js";import"./index.esm-Dozb0q9Q.js";const I=i.createContext(null),b=()=>{const e=i.useContext(I);if(!e)throw new Error("AccordionHeader and AccordionPanel must be used within Accordion");return e},m=u.button`
+import{j as n,a as l,c as w}from"./emotion-react.browser.esm-Cemqn3pj.js";import{s as u}from"./emotion-styled.browser.esm-C4boggRP.js";import{P as p}from"./Paragraph-CMHWJ8rr.js";import{r as i}from"./index-ZKl5n0xc.js";import"./emotion-use-insertion-effect-with-fallbacks.browser.esm-Bhc8sTDk.js";import"./extends-CF3RwP-h.js";import"./index.esm-Dozb0q9Q.js";const I=i.createContext(null),b=()=>{const e=i.useContext(I);if(!e)throw new Error("AccordionHeader and AccordionPanel must be used within Accordion");return e},m=u.button`
   display: flex;
   align-items: center;
   justify-content: space-between;
