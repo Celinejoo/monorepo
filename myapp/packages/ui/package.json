@@ -20,7 +20,8 @@
     "dev": "rollup -c -w",
     "lint": "echo 'lint not configured'",
     "storybook": "storybook dev -p 6006",
-    "build-storybook": "storybook build"
+    "build-storybook": "storybook build",
+    "deploy-storybook": "gh-pages -d storybook-static"
   },
   "dependencies": {
     "@chromatic-com/storybook": "^4.1.1",
