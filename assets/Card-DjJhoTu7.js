@@ -1,6 +1,0 @@
-import{j as a,c as l}from"./emotion-react.browser.esm-Cemqn3pj.js";import{s as d}from"./emotion-styled.browser.esm-C4boggRP.js";import{b as i}from"./generateBackground-bMX2-9Lq.js";const c=d.div({padding:"18px 24px",borderRadius:"18px",transition:"all ease 0.2s","&:active":{transform:"scale(0.99)"}},({background:e="gray100"})=>i[e],({outlined:e})=>e&&l`
-      border: 1px solid;
-      border-color: var(--color-gray-400);
-    `),u=({onClick:e,as:n,outlined:o,children:t,background:s})=>a(c,{onClick:e,as:n,outlined:o,background:s,children:t}),p=d.div`
-  margin-bottom: 8px;
-`,m=({children:e})=>a(p,{children:a("div",{children:e})}),f=({children:e})=>a("div",{children:e}),r=Object.assign(u,{Header:m,Contents:f});try{r.displayName="Card",r.__docgenInfo={description:"",displayName:"Card",props:{onClick:{defaultValue:null,description:"",name:"onClick",required:!1,type:{name:"(() => void)"}},as:{defaultValue:null,description:"",name:"as",required:!1,type:{name:"enum",value:[{value:'"div"'},{value:'"li"'}]}},outlined:{defaultValue:null,description:"",name:"outlined",required:!1,type:{name:"boolean"}},background:{defaultValue:null,description:"",name:"background",required:!1,type:{name:"string"}}}}}catch{}export{r as C};
