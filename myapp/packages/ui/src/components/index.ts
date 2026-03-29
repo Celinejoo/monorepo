@@ -11,3 +11,4 @@ export * from "./TextField";
 export * from "./Tab";
 export * from "./SelectBox";
 export * from "./Spinner";
+export * from "./Accordion";
