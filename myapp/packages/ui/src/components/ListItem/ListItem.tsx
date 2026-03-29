@@ -38,7 +38,7 @@ const StyledList = styled.div<ListProps>(
     css`
       gap: 0 ${gap}px;
     `,
-  ({ padding = 24 }) =>
+  ({ padding }) =>
     padding &&
     css`
       padding: 0 ${padding}px;
@@ -82,7 +82,7 @@ export const Trailing = ({ children }: TrailingProps) => {
 
 export const Contents = ({ title, subtitle }: ContentsTextProps) => {
   return (
-    <Flex direction="column" gap={4}>
+    <Flex direction="column" gap={8}>
       <Flex.Item>
         <Paragraph typography="sub2" fontWeight="bold">
           {title}

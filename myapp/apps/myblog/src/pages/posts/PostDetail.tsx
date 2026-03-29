@@ -10,6 +10,7 @@ import { Timestamp } from "firebase/firestore";
 import { useContext } from "react";
 import AuthContext from "../../context/AuthContext";
 import { useDeletePost } from "../../hooks/useDeletePost";
+import "../../assets/css/markdown.css";
 
 function PostDetail() {
   const navigate = useNavigate();

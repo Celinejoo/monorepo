@@ -44,8 +44,9 @@ export const Button = styled.button<ButtonProps>(
             display: inline-flex;
           `,
 
-  ({ color }) => buttonColorMap[color],
   ({ variant }) => buttonVariantMap[variant],
+  ({ color }) => buttonColorMap[color],
+
   ({ size = "medium" }) => buttonSizeMap[size],
   ({ disabled }) =>
     disabled

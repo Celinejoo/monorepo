@@ -27,33 +27,61 @@ function Home() {
     <>
       <Header />
       <InnerSection>
-        <Paragraph typography="t1" as="h1" textAlign="right" fontWeight="bold">
-          Frontend Notes
+        <Paragraph typography="t1" as="h1" fontWeight="bold" color="black">
+          Frontend Study Blog
         </Paragraph>
         <Spacing y={16} />
-        <Paragraph typography="sub2" color="gray500" textAlign="right">
-          디자인시스템을 활용하여 블로그를 직접 만들어보기
-          <br /> 학습 내용 기록 블로그입니다.
-          <br /> 개발 과정의 고민과 이유, 시도들을 남깁니다.
-        </Paragraph>
-        <Spacing y={4} />
-        <Flex justifyContent="right">
-          <Button variant="fill" size="small" color="text">
-            이력서 보기
+        <Flex gap={8} direction="column" alignItems="start">
+          <div>
+            <Paragraph typography="sub2" color="gray700" as="p">
+              직접 설계한 {""}
+              <Button
+                display="inline"
+                variant="fill"
+                color="text"
+                size="medium"
+                onClick={() => {
+                  navigate(`https://celinejoo.github.io/monorepo/`);
+                }}
+              >
+                디자인 시스템
+              </Button>
+              {""} 컴포넌트를 기반으로 구축한 기술 블로그입니다.
+            </Paragraph>
+          </div>
+          <Paragraph typography="sub2" color="gray700">
+            개인적인 학습 내용들을 기록하고자 합니다.
+          </Paragraph>
+          <Paragraph typography="sub2" color="gray500"></Paragraph>
+          <Button
+            display="inline"
+            variant="fill"
+            color="text"
+            size="medium"
+            onClick={() => {
+              navigate(`https://celinejoo.github.io/monorepo/`);
+            }}
+          >
+            포트폴리오 보러가기
           </Button>
         </Flex>
-        <Spacing y={16} />
-        <div style={{ width: "50%", margin: " 0 auto" }}>
+
+        <Spacing y={12} />
+
+        <Spacing y={48} />
+
+        <div style={{ width: "50%" }}>
           <Tab
             type="fixed"
             items={[
+              { value: "전체보기", label: "전체보기" },
               { value: "자바스크립트", label: "자바스크립트" },
               { value: "프로젝트", label: "프로젝트" },
               { value: "others", label: "others" },
             ]}
           />
         </div>
-        <Spacing y={16} />
+        <Spacing y={48} />
         <ul>
           {posts &&
             posts?.map((item, key) => {
@@ -61,7 +89,6 @@ function Home() {
                 <>
                   <List
                     as="li"
-                    padding="24"
                     margin={24}
                     onClick={() => {
                       navigate(`/posts/${item.id}`);
@@ -71,7 +98,7 @@ function Home() {
                     <List.Contents title={item.title} subtitle={item.summary} />
                     <List.Trailing>
                       <>
-                        <Paragraph typography="sub3" color="gray700">
+                        <Paragraph typography="sub4" color="gray600">
                           {item?.createdAt instanceof Timestamp
                             ? item?.createdAt
                                 .toDate()
@@ -114,7 +141,7 @@ function Home() {
                       </>
                     </List.Trailing>
                   </List>
-                  <Border varient="padding24" height="1" />
+                  <Border varient="full" height="1" />
                 </>
               );
             })}
