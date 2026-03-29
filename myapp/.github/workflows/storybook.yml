@@ -28,8 +28,6 @@ jobs:
 
       - name: Build Storybook
         run: pnpm --filter @repo/ui build-storybook
-        env:
-          VITE_BASE_URL: /monorepo/
 
       - name: Create .nojekyll
         run: touch packages/ui/storybook-static/.nojekyll
