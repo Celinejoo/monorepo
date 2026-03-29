@@ -1,7 +1,7 @@
 import styled from "@emotion/styled";
-import { colors, spacing } from "@repo/tokens";
+
 import { useId, useState } from "react";
-import { Typography } from "../Typography";
+import { Paragraph } from "../Paragraph";
 
 interface OptionItem {
   value: string;
@@ -22,33 +22,37 @@ const StyledLabel = styled.label`
   display: inline-block;
   font-size: 12px;
   font-weight: 500;
-  color: ${colors.ui.textPrimary};
-  margin-bottom: ${spacing[1]};
+  margin-bottom: 4px;
 `;
 
 const StyledSelect = styled.div<{ disabled?: boolean }>`
   width: 185px;
-  padding: ${spacing[2]};
-  border: 1px solid ${colors.gray[400]};
-  border-radius: ${spacing[2]};
-  background-color: ${({ disabled }) => disabled && colors.gray[200]};
+  padding: 4px 0;
+  border-radius: 8px;
+  background-color: ${({ disabled }) => disabled && `var(--color-gray-20)`};
   opacity: ${({ disabled }) => disabled && 0.5};
+  cursor: pointer;
 `;
 
 const OptionList = styled.ul`
   width: 185px;
-  padding: ${spacing[2]} 0;
-  border: 1px solid ${colors.gray[300]};
-  margin-top: ${spacing[1]};
-  border-radius: ${spacing[2]};
+  padding: 8px 0;
+  border: 1px solid var(--color-gray-300);
+  margin-top: 4px;
+  border-radius: 8px;
 `;
 
 const OptionItem = styled.li`
-  padding: ${spacing[2]};
+  padding: 8px;
   cursor: pointer;
-
+  transition: all ease 0.2s;
   &:hover {
-    background: ${colors.gray[100]};
+    background: var(--color-gray-100);
+    border-radius:4px;
+     transform: scale(0.97);
+  }
+  &:active {
+    transform: scale(0.97;
   }
 `;
 
@@ -66,7 +70,7 @@ export const SelectBox = ({
   const [isOpen, setIsOpen] = useState(false);
 
   const [innerValue, setInnerValue] = useState(
-    defaultValue ?? options[0]?.value
+    defaultValue ?? options[0]?.value,
   );
   const isControlled = value !== undefined;
   const selectedValue = isControlled ? value : innerValue;
@@ -88,17 +92,17 @@ export const SelectBox = ({
         onClick={() => !disabled && setIsOpen(!isOpen)}
         {...props}
       >
-        <Typography typography="bodyS" as="span">
+        <Paragraph typography="sub3" as="span">
           {selectedOption?.label}
-        </Typography>
+        </Paragraph>
       </StyledSelect>
       {isOpen && (
         <OptionList>
           {options.map((opt) => (
             <OptionItem key={opt.value} onClick={() => handleSelect(opt.value)}>
-              <Typography typography="bodyS" as="span">
+              <Paragraph typography="sub3" as="span">
                 {opt.label}
-              </Typography>
+              </Paragraph>
             </OptionItem>
           ))}
         </OptionList>
