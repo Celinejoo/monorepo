@@ -4,6 +4,10 @@ import App from "./App.tsx";
 import { globalReset } from "@repo/ui";
 import { BrowserRouter } from "react-router";
 import { AuthContextProvider } from "./context/AuthContext.tsx";
+import { injectCssVariables, injectTypographyClasses } from "@repo/tokens";
+
+injectCssVariables();
+injectTypographyClasses();
 
 createRoot(document.getElementById("root")!).render(
   <AuthContextProvider>
@@ -11,5 +15,5 @@ createRoot(document.getElementById("root")!).render(
     <BrowserRouter>
       <App />
     </BrowserRouter>
-  </AuthContextProvider>
+  </AuthContextProvider>,
 );

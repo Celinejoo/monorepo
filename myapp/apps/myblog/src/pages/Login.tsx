@@ -1,5 +1,5 @@
 import styled from "@emotion/styled";
-import { Button, TextField, Typography } from "@repo/ui";
+import { Button, Paragraph, TextField } from "@repo/ui";
 import { Spacing } from "../components/Spacing";
 import { useState } from "react";
 import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
@@ -50,10 +50,13 @@ function Login() {
   };
   return (
     <Wrapper>
-      <Typography typography="headingL">로그인</Typography>
+      <Paragraph typography="t1" fontWeight="bold">
+        로그인
+      </Paragraph>
       <Spacing y={40} />
       <form onSubmit={handleSubmit}>
         <TextField
+          variant="filled"
           label="아이디"
           type="email"
           name="email"
@@ -65,6 +68,7 @@ function Login() {
         />
         <Spacing y={24} />
         <TextField
+          variant="filled"
           label="비밀번호"
           type="password"
           name="password"
@@ -77,7 +81,13 @@ function Login() {
         <Spacing y={24} />
 
         <Spacing y={48} />
-        <Button variant="solid" full disabled={error}>
+        <Button
+          variant="fill"
+          color="primary"
+          size="large"
+          display="full"
+          disabled={error}
+        >
           로그인
         </Button>
       </form>

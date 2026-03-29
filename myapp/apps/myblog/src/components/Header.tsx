@@ -1,4 +1,4 @@
-import { Button, FlexLayout } from "@repo/ui";
+import { Button, Flex } from "@repo/ui";
 import { Spacing } from "./Spacing";
 import { getAuth, signOut } from "firebase/auth";
 
@@ -31,23 +31,38 @@ export const Header = () => {
   return (
     <>
       <Spacing y={12} />
-      <FlexLayout justifyContent="end" gap={12}>
+      <Flex justifyContent="end" gap={12}>
         {user ? (
-          <>
-            <Button variant="solid" size="small" onClick={handleNewPost}>
+          <Flex.Item>
+            <Button
+              variant="fill"
+              color="primary"
+              size="small"
+              onClick={handleNewPost}
+            >
               글 작성하기
             </Button>
-            <Button variant="gray" size="small" onClick={handleLogout}>
+            <Button
+              variant="fill"
+              color="light"
+              size="small"
+              onClick={handleLogout}
+            >
               로그아웃
             </Button>
-          </>
+          </Flex.Item>
         ) : (
-          <Button variant="solid" size="small" onClick={handleLogin}>
+          <Button
+            variant="fill"
+            size="small"
+            color="primary"
+            onClick={handleLogin}
+          >
             로그인
           </Button>
         )}
         <Spacing x={4} />
-      </FlexLayout>
+      </Flex>
     </>
   );
 };

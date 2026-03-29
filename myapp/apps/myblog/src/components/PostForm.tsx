@@ -1,4 +1,4 @@
-import { Button, FlexLayout, SelectBox, TextField, Typography } from "@repo/ui";
+import { Button, Flex, Paragraph, TextField } from "@repo/ui";
 import { Spacing } from "./Spacing";
 
 import MDEditor from "@uiw/react-md-editor";
@@ -131,21 +131,27 @@ export const PostForm = () => {
         onChange={(v) => setCategory(v as CategoryType)}
       /> */}
       <Spacing y={24} />
-      <Typography typography="caption">내용</Typography>
+      <Paragraph typography="sub3">내용</Paragraph>
+
       <Spacing y={4} />
       <MDEditor height="500px" value={content} onChange={handleEditorChange} />
       {!!error.content && (
         <>
           <Spacing y={4} />
-          <Typography typography="caption" color="error">
+          {/* <Typography typography="caption" color="error">
             {error.content}
-          </Typography>
+          </Typography> */}
+          <p> {error.content}</p>
         </>
       )}
       <Spacing y={48} />
-      <FlexLayout justifyContent="center">
-        <Button variant="solid">{post ? "수정하기" : "등록하기"}</Button>
-      </FlexLayout>
+      <Flex alignItems="center" justifyContent="center">
+        <Flex.Item>
+          <Button variant="fill" color="primary" size="large">
+            {post ? "수정하기" : "등록하기"}
+          </Button>
+        </Flex.Item>
+      </Flex>
     </form>
   );
 };

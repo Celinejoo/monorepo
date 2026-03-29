@@ -1,4 +1,4 @@
-import { Button, FlexLayout, ListItem, Tab, Typography } from "@repo/ui";
+import { Border, Button, Flex, List, Paragraph, Tab } from "@repo/ui";
 import { Spacing } from "../components/Spacing";
 import { Header } from "../components/Header";
 import { InnerSection } from "../components/InnerSection";
@@ -27,23 +27,23 @@ function Home() {
     <>
       <Header />
       <InnerSection>
-        <Typography typography="headingL" as="h1" textAlign="right">
+        <Paragraph typography="t1" as="h1" textAlign="right" fontWeight="bold">
           Frontend Notes
-        </Typography>
+        </Paragraph>
         <Spacing y={16} />
-        <Typography typography="bodyS" color="textSubtle" textAlign="right">
-          학습 내용 기록 블로그를 직접 만들어 봅시다.
+        <Paragraph typography="sub2" color="gray500" textAlign="right">
+          디자인시스템을 활용하여 블로그를 직접 만들어보기
+          <br /> 학습 내용 기록 블로그입니다.
           <br /> 개발 과정의 고민과 이유, 시도들을 남깁니다.
-        </Typography>
+        </Paragraph>
         <Spacing y={4} />
-        <FlexLayout justifyContent="right" style={{ marginRight: -8 }}>
-          <Button variant="textButton" size="small">
+        <Flex justifyContent="right">
+          <Button variant="fill" size="small" color="text">
             이력서 보기
           </Button>
-        </FlexLayout>
-
+        </Flex>
         <Spacing y={16} />
-        <FlexLayout justifyContent="center">
+        <div style={{ width: "50%", margin: " 0 auto" }}>
           <Tab
             type="fixed"
             items={[
@@ -52,63 +52,73 @@ function Home() {
               { value: "others", label: "others" },
             ]}
           />
-        </FlexLayout>
-        {posts &&
-          posts?.map((item, key) => {
-            return (
-              <ListItem
-                onClick={() => {
-                  navigate(`/posts/${item.id}`);
-                }}
-                key={key}
-                spacing={8}
-                showDivider
-                contents={
-                  <ListItem.Texts title={item.title} subtitle={item.summary} />
-                }
-                trailing={
-                  <>
-                    <Typography typography="caption" color="textSubtle">
-                      {item?.createdAt instanceof Timestamp
-                        ? item?.createdAt.toDate().toLocaleDateString("ko", {
-                            year: "numeric",
-                            month: "2-digit",
-                            day: "2-digit",
-                          })
-                        : item.createdAt}
-                    </Typography>
-                    {!!user && (
-                      <FlexLayout
-                        justifyContent="end"
-                        gap={12}
-                        style={{ width: "100%" }}
-                      >
-                        <Button
-                          variant="textButton"
-                          size="small"
-                          onClick={(e) => {
-                            e.stopPropagation();
-                            navigate(`/posts/edit/${item.id}`);
-                          }}
-                        >
-                          수정하기
-                        </Button>
-                        <Button
-                          variant="textButton"
-                          size="small"
-                          onClick={() => {
-                            if (item.id) handleDelete(item.id);
-                          }}
-                        >
-                          삭제하기
-                        </Button>
-                      </FlexLayout>
-                    )}
-                  </>
-                }
-              />
-            );
-          })}
+        </div>
+        <Spacing y={16} />
+        <ul>
+          {posts &&
+            posts?.map((item, key) => {
+              return (
+                <>
+                  <List
+                    as="li"
+                    padding="24"
+                    margin={24}
+                    onClick={() => {
+                      navigate(`/posts/${item.id}`);
+                    }}
+                    key={key}
+                  >
+                    <List.Contents title={item.title} subtitle={item.summary} />
+                    <List.Trailing>
+                      <>
+                        <Paragraph typography="sub3" color="gray700">
+                          {item?.createdAt instanceof Timestamp
+                            ? item?.createdAt
+                                .toDate()
+                                .toLocaleDateString("ko", {
+                                  year: "numeric",
+                                  month: "2-digit",
+                                  day: "2-digit",
+                                })
+                            : item.createdAt}
+                        </Paragraph>
+                        {/* {!!user && (
+                        <Flex justifyContent="end" gap={12}>
+                          <Flex.Item>
+                            <Button
+                              variant="fill"
+                              color="text"
+                              size="small"
+                              onClick={(e) => {
+                                e.stopPropagation();
+                                navigate(`/posts/edit/${item.id}`);
+                              }}
+                            >
+                              수정하기
+                            </Button>
+                          </Flex.Item>
+                          <Flex.Item>
+                            <Button
+                              variant="fill"
+                              color="text"
+                              size="small"
+                              onClick={() => {
+                                if (item.id) handleDelete(item.id);
+                              }}
+                            >
+                              삭제하기
+                            </Button>
+                          </Flex.Item>
+                        </Flex>
+                      )} */}
+                      </>
+                    </List.Trailing>
+                  </List>
+                  <Border varient="padding24" height="1" />
+                </>
+              );
+            })}
+        </ul>
       </InnerSection>
     </>
   );
