@@ -1,0 +1,37 @@
+name: Deploy Storybook to GitHub Pages
+
+on:
+  push:
+    branches:
+      - main # 본인의 메인 브랜치 이름 확인
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Install pnpm
+        uses: pnpm/action-setup@v3
+        with:
+          version: 9 # 사용 중인 pnpm 버전
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: "pnpm"
+
+      - name: Install dependencies
+        run: pnpm install
+
+      - name: Build Storybook
+        # @my-repo/ui 부분은 실제 패키지 명으로 수정하세요
+        run: pnpm --filter @myapp/packages/ui build-storybook
+
+      - name: Deploy to GitHub Pages
+        uses: JamesIves/github-pages-deploy-action@v4
+        with:
+          folder: packages/ui/storybook-static # 빌드 결과물 경로
+          branch: gh-pages # 배포될 브랜치
