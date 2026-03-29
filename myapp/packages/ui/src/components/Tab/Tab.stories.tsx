@@ -4,27 +4,66 @@ import { Tab } from "./Tab";
 const meta: Meta<typeof Tab> = {
   title: "Components/Tab",
   component: Tab,
+  tags: ["autodocs"],
+  parameters: {
+    layout: "padded",
+    docs: {
+      description: {
+        component:
+          "`Tab` 컴포넌트는 `fixed`, `scrollable` 타입과 `label`, `label-icon`, `icon` 구성을 지원하는 탭 컴포넌트입니다.",
+      },
+    },
+  },
+  argTypes: {
+    type: {
+      control: "radio",
+      description: "탭 레이아웃 타입을 설정합니다.",
+      options: ["fixed", "scrollable"],
+    },
+    configuration: {
+      control: "radio",
+      description: "탭 아이템 표시 방식을 설정합니다.",
+      options: ["label", "label-icon", "icon"],
+    },
+    items: {
+      control: false,
+      description: "탭에 표시할 아이템 목록입니다.",
+    },
+  },
+  args: {
+    type: "fixed",
+    configuration: "label",
+  },
 };
-export default meta;
 
+export default meta;
 type Story = StoryObj<typeof Tab>;
 
 export const Fixed: Story = {
-  render: () => (
+  args: {
+    type: "fixed",
+    configuration: "label",
+  },
+  render: (args) => (
     <Tab
-      type="fixed"
+      {...args}
       items={[
-        { value: "자바스크립트", label: "자바스크립트" },
-        { value: "프로젝트", label: "프로젝트" },
+        { value: "1", label: "사과" },
+        { value: "2", label: "바나나" },
+        { value: "3", label: "포도" },
       ]}
     />
   ),
 };
 
-export const Scroll: Story = {
-  render: () => (
+export const Scrollable: Story = {
+  args: {
+    type: "scrollable",
+    configuration: "label",
+  },
+  render: (args) => (
     <Tab
-      type="scrollable"
+      {...args}
       items={[
         { value: "1", label: "아주아주긴탭이름" },
         { value: "2", label: "배" },
@@ -46,26 +85,34 @@ export const Scroll: Story = {
 };
 
 export const LabelIcon: Story = {
-  render: () => (
+  args: {
+    type: "fixed",
+    configuration: "label-icon",
+  },
+  render: (args) => (
     <Tab
-      type="scrollable"
-      configuration="label-icon"
+      {...args}
       items={[
-        { value: "1", label: "사과", icon: "‼️" },
-        { value: "2", label: "배", icon: "🔅" },
+        { value: "1", label: "사과", icon: "🍎" },
+        { value: "2", label: "바나나", icon: "🍌" },
+        { value: "3", label: "포도", icon: "🍇" },
       ]}
     />
   ),
 };
 
-export const Icon: Story = {
-  render: () => (
+export const IconOnly: Story = {
+  args: {
+    type: "fixed",
+    configuration: "icon",
+  },
+  render: (args) => (
     <Tab
-      type="scrollable"
-      configuration="icon"
+      {...args}
       items={[
-        { value: "1", icon: "‼️" },
-        { value: "2", icon: "🔅" },
+        { value: "1", icon: "🍎" },
+        { value: "2", icon: "🍌" },
+        { value: "3", icon: "🍇" },
       ]}
     />
   ),

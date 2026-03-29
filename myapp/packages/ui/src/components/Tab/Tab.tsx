@@ -66,13 +66,6 @@ export const TabItem = styled.li<{
     `}
 `;
 
-const IconWrap = styled.span`
-  line-height: 0;
-  display: inline-block;
-  width: 20px;
-  height: 20px;
-`;
-
 const Label = ({
   children,
   active,
@@ -119,8 +112,8 @@ export const Tab = ({
           return (
             <TabItem active={active} key={value} type={type}>
               <button onClick={() => handleChange(item.value)}>
-                {showIcon && <IconWrap>{item.icon}</IconWrap>}
-                {showLabel && <Label active={active}>{item.label}</Label>}
+                {showIcon ? <i>{item.icon}</i> : null}
+                {showLabel ? <Label active={active}>{item.label}</Label> : null}
               </button>
             </TabItem>
           );
