@@ -1,4 +1,4 @@
-import{a as q,j as r,F as B}from"./emotion-react.browser.esm-Cemqn3pj.js";import{s as n}from"./emotion-styled.browser.esm-C4boggRP.js";import{r as d}from"./index-ZKl5n0xc.js";import{P as b}from"./Paragraph-w7JEoODi.js";import"./emotion-use-insertion-effect-with-fallbacks.browser.esm-Bhc8sTDk.js";import"./extends-CF3RwP-h.js";import"./index.esm-Dozb0q9Q.js";const C=n.label`
+import{a as q,j as r,F as B}from"./emotion-react.browser.esm-Cemqn3pj.js";import{s as n}from"./emotion-styled.browser.esm-C4boggRP.js";import{r as d}from"./index-ZKl5n0xc.js";import{P as b}from"./Paragraph-sStRRx8F.js";import"./emotion-use-insertion-effect-with-fallbacks.browser.esm-Bhc8sTDk.js";import"./extends-CF3RwP-h.js";import"./index.esm-Dozb0q9Q.js";const C=n.label`
   display: inline-block;
   font-size: 12px;
   font-weight: 500;
