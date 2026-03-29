@@ -50,7 +50,7 @@ const FlexBase = ({
   </StyledFlex>
 );
 
-const FlexItem = ({ children }: FlexItemProps) => <>{children}</>;
+export const FlexItem = ({ children }: FlexItemProps) => <>{children}</>;
 
 interface FlexCompoundComponent extends React.FC<FlexProps> {
   Item: React.FC<FlexItemProps>;

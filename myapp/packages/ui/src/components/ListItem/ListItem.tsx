@@ -72,15 +72,15 @@ const ListBase = ({
   </>
 );
 
-const Leading = ({ children }: LeadingProps) => {
+export const Leading = ({ children }: LeadingProps) => {
   return <div>{children}</div>;
 };
 
-const Trailing = ({ children }: TrailingProps) => {
+export const Trailing = ({ children }: TrailingProps) => {
   return <div style={{ marginLeft: "auto" }}>{children}</div>;
 };
 
-const Contents = ({ title, subtitle }: ContentsTextProps) => {
+export const Contents = ({ title, subtitle }: ContentsTextProps) => {
   return (
     <Flex direction="column" gap={4}>
       <Flex.Item>

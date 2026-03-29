@@ -122,21 +122,3 @@ export const Tab = ({
     </Flex>
   );
 };
-
-/* <Tab type ='fixed' size>
-  <Tab.Item/> 
-   <Tab.Item/> 
-</Tab> */
-/*  
-
-<div> Tab
-<ul> ---> 스크롤 되어야하는 부분
-
-  <li><button>아이콘, 텍스트</button></li> Tab.Item
-  <li><button>아이콘, 텍스트</button></li> 
-  <li><button>아이콘, 텍스트</button></li>
-</ul>
-
-</div>
-
-*/

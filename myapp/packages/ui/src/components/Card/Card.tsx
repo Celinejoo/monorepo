@@ -60,7 +60,7 @@ const StyledCardHeader = styled.div`
   margin-bottom: 8px;
 `;
 
-const CardHeader = ({ children }: CardHeaderProps) => {
+export const CardHeader = ({ children }: CardHeaderProps) => {
   return (
     <StyledCardHeader>
       <div>{children}</div>
@@ -68,7 +68,7 @@ const CardHeader = ({ children }: CardHeaderProps) => {
   );
 };
 
-const CardContents = ({ children }: CardContentsProps) => {
+export const CardContents = ({ children }: CardContentsProps) => {
   return <div>{children}</div>;
 };
 

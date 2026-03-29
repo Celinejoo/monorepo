@@ -1,1 +1,1 @@
-export * from "./FlexLayout";
+export { Flex, FlexItem } from "./FlexLayout";

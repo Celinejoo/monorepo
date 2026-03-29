@@ -43,7 +43,7 @@ const StyledInput = styled.input<TextFieldProps>`
         `}
 `;
 
-const Label = ({
+export const Label = ({
   children,
   isFocused,
   error,
@@ -63,7 +63,7 @@ const Label = ({
   );
 };
 
-const HelperText = ({
+export const HelperText = ({
   children,
   error,
 }: {
