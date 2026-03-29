@@ -7,7 +7,7 @@ const config: StorybookConfig = {
   addons: ["@storybook/addon-essentials"],
   async viteFinal(config) {
     return mergeConfig(config, {
-      base: "/monorepo/",
+      base: "./",
     });
   },
 };
