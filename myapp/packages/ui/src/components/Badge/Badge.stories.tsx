@@ -34,7 +34,7 @@ const meta: Meta<typeof Badge> = {
       control: "radio",
       description:
         "뱃지 배경 색상을 설정합니다. 디자인 토큰에 정의된 컬러 값을 사용할 수 있습니다.",
-      options: ["gray700", "gry500", "pink500", "red500"],
+      options: ["gray500", "green500", "pink500", "red500", "blue500"],
     },
   },
 };
