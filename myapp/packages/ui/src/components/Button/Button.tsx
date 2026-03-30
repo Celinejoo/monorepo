@@ -46,7 +46,6 @@ export const Button = styled.button<ButtonProps>(
 
   ({ variant }) => buttonVariantMap[variant],
   ({ color }) => buttonColorMap[color],
-
   ({ size = "medium" }) => buttonSizeMap[size],
   ({ disabled }) =>
     disabled

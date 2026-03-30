@@ -46,7 +46,7 @@ export const buttonColorMap = {
     --button-text-color: 255, 255, 255;
   `,
   text: css`
-    padding: 0;
+    padding: 0 !important;
     background: none;
     --button-text-color: 107, 114, 128;
     &: hover {
