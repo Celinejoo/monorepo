@@ -13,3 +13,4 @@ export * from "./SelectBox";
 export * from "./Spinner";
 export * from "./Accordion";
 export * from "./IconButton";
+export * from "./Tooltip";
