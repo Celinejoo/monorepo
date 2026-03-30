@@ -4,6 +4,9 @@ import PostNew from "../pages/posts/PostNew";
 import PostDetail from "../pages/posts/PostDetail";
 import PostEdit from "../pages/posts/PostEdit";
 import Login from "../pages/Login";
+import { Suspense } from "react";
+
+import { LoadingPage } from "./Loading";
 
 interface RouterProps {
   isAuth: boolean;
@@ -16,7 +19,14 @@ function Router({ isAuth }: RouterProps) {
     <Routes>
       {isAuth ? (
         <>
-          <Route path="/" element={<Home />} />
+          <Route
+            path="/"
+            element={
+              <Suspense fallback={<LoadingPage />}>
+                <Home />
+              </Suspense>
+            }
+          />
           <Route path="/login" element={<Login />} />
           <Route path="/posts/new" element={<PostNew />} />
           <Route path="/posts/:id" element={<PostDetail />} />
@@ -25,7 +35,14 @@ function Router({ isAuth }: RouterProps) {
         </>
       ) : (
         <>
-          <Route path="/" element={<Home />} />
+          <Route
+            path="/"
+            element={
+              <Suspense fallback={<LoadingPage />}>
+                <Home />
+              </Suspense>
+            }
+          />
           <Route path="/login" element={<Login />} />
           <Route path="/posts/:id" element={<PostDetail />} />
           <Route path="/*" element={<Navigate replace to="/" />} />

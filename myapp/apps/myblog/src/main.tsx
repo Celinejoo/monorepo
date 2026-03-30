@@ -5,6 +5,7 @@ import { globalReset } from "@repo/ui";
 import { BrowserRouter } from "react-router";
 import { AuthContextProvider } from "./context/AuthContext.tsx";
 import { injectCssVariables, injectTypographyClasses } from "@repo/tokens";
+import ErrorBoundary from "./components/ErrorBoundary.tsx";
 
 injectCssVariables();
 injectTypographyClasses();
@@ -13,7 +14,9 @@ createRoot(document.getElementById("root")!).render(
   <AuthContextProvider>
     <Global styles={globalReset} />
     <BrowserRouter>
-      <App />
+      <ErrorBoundary fallbackUI={<div>Error</div>}>
+        <App />
+      </ErrorBoundary>
     </BrowserRouter>
   </AuthContextProvider>,
 );
