@@ -43,6 +43,10 @@ const meta: Meta<typeof IconButton> = {
       control: "text",
       description: "아이콘의 상태를 텍스트로 설명해줍니다.",
     },
+    ariaLabel: {
+      control: "text",
+      description: "aria-label의 텍스트를 입력해줍니다.",
+    },
     disabled: {
       control: "boolean",
       description: "버튼의 비활성화 상태를 나태닙니다.",
@@ -88,7 +92,13 @@ export const Configuration: Story = {
   },
   render: (args) => (
     <>
-      <IconButton size="medium" iconSize="medium" icon={<Icon />} {...args} />
+      <IconButton
+        ariaLabel="알림"
+        size="medium"
+        iconSize="medium"
+        icon={<Icon />}
+        {...args}
+      />
     </>
   ),
 };

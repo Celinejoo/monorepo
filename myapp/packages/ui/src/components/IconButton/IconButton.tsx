@@ -15,7 +15,8 @@ export interface IconButtonProps {
   iconSize?: IconSize;
   configuration?: "icon" | "label-icon";
   icon?: React.ReactNode;
-  label?: string | React.ReactNode;
+  ariaLabel?: string;
+  label?: React.ReactNode;
   disabled?: boolean;
   onClick?: () => void;
 }
@@ -86,6 +87,7 @@ export const IconButton = ({
   iconSize,
   label,
   disabled,
+  ariaLabel,
   onClick,
 }: IconButtonProps) => {
   return (
@@ -94,7 +96,7 @@ export const IconButton = ({
       size={size}
       disabled={disabled}
       onClick={onClick}
-      aria-label={label}
+      aria-label={ariaLabel}
     >
       <Icon size={iconSize}>{icon}</Icon>
       {configuration === "label-icon" && label && (
