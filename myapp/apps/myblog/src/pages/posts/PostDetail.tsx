@@ -1,4 +1,4 @@
-import { Badge, Button, Flex, Paragraph } from "@repo/ui";
+import { Badge, Button, Flex, IconButton, Paragraph, Tooltip } from "@repo/ui";
 import { InnerSection } from "../../components/InnerSection";
 
 import { Spacing } from "../../components/Spacing";
@@ -7,10 +7,11 @@ import { useNavigate, useParams } from "react-router";
 import { useGetPostId } from "../../hooks/useGetPostId";
 import MDEditor from "@uiw/react-md-editor";
 import { Timestamp } from "firebase/firestore";
-import { useContext } from "react";
+import { startTransition, useContext, useOptimistic } from "react";
 import AuthContext from "../../context/AuthContext";
 import { useDeletePost } from "../../hooks/useDeletePost";
 import "../../assets/css/markdown.css";
+import { useUpdateLike } from "../../hooks/useUpdateLike";
 
 function PostDetail() {
   const navigate = useNavigate();
@@ -18,7 +19,35 @@ function PostDetail() {
   const { user } = useContext(AuthContext);
   const { data: post } = useGetPostId(id);
   const { mutate: deletePost } = useDeletePost();
+  const { mutateAsync: updateLike } = useUpdateLike();
 
+  const count = post?.likeCount ?? 0;
+
+  const [optimisticCount, addOptimisticLike] = useOptimistic<number, number>(
+    count,
+    (current, delta) => current + delta,
+  );
+
+  const handleLikeButton = () => {
+    if (!post) return;
+
+    const nextCount = count + 1;
+
+    startTransition(async () => {
+      addOptimisticLike(1);
+
+      try {
+        await updateLike({
+          id: post.id,
+          data: {
+            likeCount: nextCount,
+          },
+        });
+      } catch {
+        addOptimisticLike(-1);
+      }
+    });
+  };
   const handleDelete = (id: string, e?: React.MouseEvent) => {
     e?.stopPropagation();
     const ok = window.confirm("삭제하시겠습니까?");
@@ -60,9 +89,13 @@ function PostDetail() {
       <Spacing y={48} />
       {post && <MDEditor.Markdown source={post.content} />}
       <Spacing y={48} />
-      <Badge size="large" background="pink300">
-        {post?.likeCount}
-      </Badge>
+      <Tooltip content="좋아요를 눌러주세요">
+        <IconButton
+          icon={<>💙</>}
+          label={<>optimisticCount</>}
+          onClick={handleLikeButton}
+        />
+      </Tooltip>
       <Spacing y={48} />
       {!!user && (
         <Flex justifyContent="end" gap={12}>
