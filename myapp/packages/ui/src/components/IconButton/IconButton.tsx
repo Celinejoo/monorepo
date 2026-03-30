@@ -15,7 +15,7 @@ export interface IconButtonProps {
   iconSize?: IconSize;
   configuration?: "icon" | "label-icon";
   icon?: React.ReactNode;
-  label?: React.ReactNode;
+  label?: string | React.ReactNode;
   disabled?: boolean;
   onClick?: () => void;
 }
