@@ -1,5 +1,5 @@
 import type { Timestamp } from "firebase/firestore";
-import type { CategoryType } from "../pages/Home";
+import type { CategoryType } from "../components/PostForm";
 
 export type PostType = {
   // ownerId?: string;
