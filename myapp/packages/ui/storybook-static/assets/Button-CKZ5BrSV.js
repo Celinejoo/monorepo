@@ -31,7 +31,7 @@ import{s as o}from"./emotion-styled.browser.esm-C4boggRP.js";import{c as e}from"
     --button-bg-weak: 229, 231, 235;
     --button-text-color: 255, 255, 255;
   `,text:e`
-    padding: 0;
+    padding: 0 !important;
     background: none;
     --button-text-color: 107, 114, 128;
     &: hover {
@@ -53,4 +53,4 @@ import{s as o}from"./emotion-styled.browser.esm-C4boggRP.js";import{c as e}from"
           `,({variant:t})=>l[t],({color:t})=>r[t],({size:t="medium"})=>n[t],({disabled:t})=>t?e`
           opacity: 0.5;
           cursor: not-allowed;
-        `:void 0);try{a.displayName="Button",a.__docgenInfo={description:"",displayName:"Button",props:{theme:{defaultValue:null,description:"",name:"theme",required:!1,type:{name:"Theme"}},as:{defaultValue:null,description:"",name:"as",required:!1,type:{name:"ElementType<any, keyof IntrinsicElements>"}},color:{defaultValue:null,description:"",name:"color",required:!1,type:{name:"enum",value:[{value:'"text"'},{value:'"primary"'},{value:'"danger"'},{value:'"light"'},{value:'"dark"'}]}},variant:{defaultValue:null,description:"",name:"variant",required:!0,type:{name:"enum",value:[{value:'"fill"'},{value:'"weak"'}]}},size:{defaultValue:null,description:"",name:"size",required:!0,type:{name:"enum",value:[{value:'"small"'},{value:'"medium"'},{value:'"large"'},{value:'"xlarge"'}]}},display:{defaultValue:null,description:"",name:"display",required:!1,type:{name:"enum",value:[{value:'"inline"'},{value:'"full"'},{value:'"block"'}]}},disabled:{defaultValue:null,description:"",name:"disabled",required:!1,type:{name:"boolean"}}}}}catch{}export{a as B};
+        `:void 0);try{a.displayName="Button",a.__docgenInfo={description:"",displayName:"Button",props:{theme:{defaultValue:null,description:"",name:"theme",required:!1,type:{name:"Theme"}},as:{defaultValue:null,description:"",name:"as",required:!1,type:{name:"ElementType<any, keyof IntrinsicElements>"}},color:{defaultValue:null,description:"",name:"color",required:!1,type:{name:"enum",value:[{value:'"text"'},{value:'"primary"'},{value:'"danger"'},{value:'"light"'},{value:'"dark"'}]}},variant:{defaultValue:null,description:"",name:"variant",required:!0,type:{name:"enum",value:[{value:'"fill"'},{value:'"weak"'}]}},size:{defaultValue:null,description:"",name:"size",required:!0,type:{name:"enum",value:[{value:'"small"'},{value:'"large"'},{value:'"medium"'},{value:'"xlarge"'}]}},display:{defaultValue:null,description:"",name:"display",required:!1,type:{name:"enum",value:[{value:'"full"'},{value:'"inline"'},{value:'"block"'}]}},disabled:{defaultValue:null,description:"",name:"disabled",required:!1,type:{name:"boolean"}}}}}catch{}export{a as B};
