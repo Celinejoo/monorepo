@@ -1,27 +1,17 @@
-import { Border, Button, Flex, List, Paragraph, Tab } from "@repo/ui";
+import { Badge, Border, Button, Flex, List, Paragraph, Tab } from "@repo/ui";
 import { Spacing } from "../components/Spacing";
 import { Header } from "../components/Header";
 import { InnerSection } from "../components/InnerSection";
 import { useGetPost } from "../hooks/useGetPost";
 import { Timestamp } from "firebase/firestore";
 import { useNavigate } from "react-router";
-import { useContext } from "react";
-import AuthContext from "../context/AuthContext";
-import { useDeletePost } from "../hooks/useDeletePost";
+
+export type TabType = "ALL";
+export type CategoryType = "자바스크립트" | "프로젝트" | "OTHERS";
 
 function Home() {
   const navigate = useNavigate();
-  const { user } = useContext(AuthContext);
   const { data: posts } = useGetPost();
-  const { mutate: deletePost } = useDeletePost();
-
-  const handleDelete = (id: string, e?: React.MouseEvent) => {
-    e?.stopPropagation();
-    const ok = window.confirm("삭제하시겠습니까?");
-    if (ok) {
-      deletePost(id);
-    }
-  };
 
   return (
     <>
@@ -65,26 +55,42 @@ function Home() {
             포트폴리오 보러가기
           </Button>
         </Flex>
-
         <Spacing y={12} />
-
         <Spacing y={48} />
-
         <div style={{ width: "50%" }}>
           <Tab
             type="fixed"
+            defaultValue="ALL"
             items={[
-              { value: "전체보기", label: "전체보기" },
-              { value: "자바스크립트", label: "자바스크립트" },
-              { value: "프로젝트", label: "프로젝트" },
-              { value: "others", label: "others" },
+              {
+                label: "전체보기",
+                value: "ALL",
+              },
+              {
+                label: "자바스크립트",
+                value: "자바스크립트",
+              },
+              {
+                label: "프로젝트",
+                value: "프로젝트",
+              },
+              {
+                label: "OTHERS",
+                value: "OTHERS",
+              },
             ]}
           />
         </div>
-        <Spacing y={48} />
+        <Spacing y={24} />
         <ul>
           {posts &&
             posts?.map((item, key) => {
+              const BadgeColor =
+                item.category === "자바스크립트"
+                  ? "green500"
+                  : item.category === "프로젝트"
+                    ? "blue500"
+                    : "pink500";
               return (
                 <>
                   <List
@@ -95,6 +101,13 @@ function Home() {
                     }}
                     key={key}
                   >
+                    <List.Leading>
+                      <Badge background={BadgeColor} size="small">
+                        <Paragraph typography="sub4" color="white0">
+                          {item.category}
+                        </Paragraph>
+                      </Badge>
+                    </List.Leading>
                     <List.Contents title={item.title} subtitle={item.summary} />
                     <List.Trailing>
                       <>
@@ -109,35 +122,6 @@ function Home() {
                                 })
                             : item.createdAt}
                         </Paragraph>
-                        {/* {!!user && (
-                        <Flex justifyContent="end" gap={12}>
-                          <Flex.Item>
-                            <Button
-                              variant="fill"
-                              color="text"
-                              size="small"
-                              onClick={(e) => {
-                                e.stopPropagation();
-                                navigate(`/posts/edit/${item.id}`);
-                              }}
-                            >
-                              수정하기
-                            </Button>
-                          </Flex.Item>
-                          <Flex.Item>
-                            <Button
-                              variant="fill"
-                              color="text"
-                              size="small"
-                              onClick={() => {
-                                if (item.id) handleDelete(item.id);
-                              }}
-                            >
-                              삭제하기
-                            </Button>
-                          </Flex.Item>
-                        </Flex>
-                      )} */}
                       </>
                     </List.Trailing>
                   </List>

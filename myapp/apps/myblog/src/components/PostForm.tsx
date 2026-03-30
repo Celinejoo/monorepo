@@ -1,4 +1,4 @@
-import { Button, Flex, Paragraph, TextField } from "@repo/ui";
+import { Button, Flex, Paragraph, SelectBox, TextField } from "@repo/ui";
 import { Spacing } from "./Spacing";
 
 import MDEditor from "@uiw/react-md-editor";
@@ -15,14 +15,19 @@ type FormErrors = {
   content?: string;
 };
 
-export type CategoryType = "자바스크립트" | "프로젝트" | "Other";
+export type CategoryType = "자바스크립트" | "프로젝트" | "OTHERS";
 
-// export const CATEGORIES: CategoryType[] = ["자바스크립트", "프로젝트", "Other"];
+// eslint-disable-next-line react-refresh/only-export-components
+export const CATEGORIES: CategoryType[] = [
+  "자바스크립트",
+  "프로젝트",
+  "OTHERS",
+];
 
-// const categoryOptions = CATEGORIES.map((category) => ({
-//   label: category,
-//   value: category,
-// }));
+const categoryOptions = CATEGORIES.map((category) => ({
+  label: category,
+  value: category,
+}));
 
 export const PostForm = () => {
   const navigate = useNavigate();
@@ -35,7 +40,7 @@ export const PostForm = () => {
   const [title, setTitle] = useState("");
   const [summary, setSummary] = useState("");
   const [content, setContent] = useState("");
-  //const [category, setCategory] = useState<CategoryType>("자바스크립트");
+  const [category, setCategory] = useState<CategoryType>("자바스크립트");
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const {
@@ -67,6 +72,7 @@ export const PostForm = () => {
           id: post.id,
           data: {
             title: title,
+            category: category,
             summary: summary,
             content: content,
             id: post.id,
@@ -78,6 +84,7 @@ export const PostForm = () => {
           id: id ?? "",
           title,
           summary,
+          category,
           content,
           createdAt: new Date()?.toLocaleString("ko", {
             year: "numeric",
@@ -97,6 +104,7 @@ export const PostForm = () => {
       setTitle(post.title);
       setSummary(post.summary);
       setContent(post.content);
+      setCategory(post.category);
     }
   }, [post]);
 
@@ -124,12 +132,14 @@ export const PostForm = () => {
         helperText={error.summary}
       />
       <Spacing y={24} />
-      {/* <SelectBox
+      <SelectBox
+        defaultValue="javascript"
         label="카테고리"
         options={categoryOptions}
         value={category}
         onChange={(v) => setCategory(v as CategoryType)}
-      /> */}
+      />
+
       <Spacing y={24} />
       <Paragraph typography="sub3">내용</Paragraph>
 
@@ -138,10 +148,9 @@ export const PostForm = () => {
       {!!error.content && (
         <>
           <Spacing y={4} />
-          {/* <Typography typography="caption" color="error">
+          <Paragraph typography="sub4" color="red500">
             {error.content}
-          </Typography> */}
-          <p> {error.content}</p>
+          </Paragraph>
         </>
       )}
       <Spacing y={48} />

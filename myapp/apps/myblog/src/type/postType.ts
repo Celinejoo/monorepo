@@ -1,4 +1,5 @@
 import type { Timestamp } from "firebase/firestore";
+import type { CategoryType } from "../pages/Home";
 
 export type PostType = {
   // ownerId?: string;
@@ -7,4 +8,6 @@ export type PostType = {
   summary: string;
   createdAt?: string | Timestamp;
   content: string;
+  category: CategoryType;
+  likeCount?: number;
 };

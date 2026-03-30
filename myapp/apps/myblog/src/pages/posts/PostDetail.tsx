@@ -1,4 +1,4 @@
-import { Button, Flex, Paragraph } from "@repo/ui";
+import { Badge, Button, Flex, Paragraph } from "@repo/ui";
 import { InnerSection } from "../../components/InnerSection";
 
 import { Spacing } from "../../components/Spacing";
@@ -26,8 +26,21 @@ function PostDetail() {
       deletePost(id);
     }
   };
+
+  const BadgeColor =
+    post?.category === "자바스크립트"
+      ? "green500"
+      : post?.category === "프로젝트"
+        ? "blue500"
+        : "pink500";
   return (
     <InnerSection>
+      <Badge background={BadgeColor} size="small">
+        <Paragraph typography="sub4" color="white0">
+          {post?.category}
+        </Paragraph>
+      </Badge>
+      <Spacing y={24} />
       <Paragraph typography="t2" fontWeight="semibold">
         {post?.title}
       </Paragraph>
@@ -46,6 +59,10 @@ function PostDetail() {
 
       <Spacing y={48} />
       {post && <MDEditor.Markdown source={post.content} />}
+      <Spacing y={48} />
+      <Badge size="large" background="pink300">
+        {post?.likeCount}
+      </Badge>
       <Spacing y={48} />
       {!!user && (
         <Flex justifyContent="end" gap={12}>
