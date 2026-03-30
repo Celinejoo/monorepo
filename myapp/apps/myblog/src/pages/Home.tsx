@@ -5,14 +5,32 @@ import { InnerSection } from "../components/InnerSection";
 import { useGetPost } from "../hooks/useGetPost";
 import { Timestamp } from "firebase/firestore";
 import { useNavigate } from "react-router";
+import { useState } from "react";
 
-export type TabType = "ALL";
-export type CategoryType = "자바스크립트" | "프로젝트" | "OTHERS";
+export type TabType = "ALL" | "자바스크립트" | "프로젝트" | "OTHERS";
+
+// eslint-disable-next-line react-refresh/only-export-components
+export const TabItems: TabType[] = [
+  "ALL",
+  "자바스크립트",
+  "프로젝트",
+  "OTHERS",
+];
 
 function Home() {
+  const [activeTab, setActiveTab] = useState<TabType>("ALL");
   const navigate = useNavigate();
   const { data: posts } = useGetPost();
 
+  const TabitemsOptions = TabItems.map((item) => ({
+    label: item,
+    value: item,
+  }));
+
+  const filteredPosts =
+    activeTab === "ALL"
+      ? posts
+      : posts?.filter((post) => post.category === activeTab);
   return (
     <>
       <Header />
@@ -60,31 +78,15 @@ function Home() {
         <div style={{ width: "50%" }}>
           <Tab
             type="fixed"
-            defaultValue="ALL"
-            items={[
-              {
-                label: "전체보기",
-                value: "ALL",
-              },
-              {
-                label: "자바스크립트",
-                value: "자바스크립트",
-              },
-              {
-                label: "프로젝트",
-                value: "프로젝트",
-              },
-              {
-                label: "OTHERS",
-                value: "OTHERS",
-              },
-            ]}
+            defaultValue={activeTab}
+            items={TabitemsOptions}
+            onChange={(value) => setActiveTab(value as TabType)}
           />
         </div>
         <Spacing y={24} />
         <ul>
           {posts &&
-            posts?.map((item, key) => {
+            filteredPosts?.map((item) => {
               const BadgeColor =
                 item.category === "자바스크립트"
                   ? "green500"
@@ -99,7 +101,7 @@ function Home() {
                     onClick={() => {
                       navigate(`/posts/${item.id}`);
                     }}
-                    key={key}
+                    key={item.id}
                   >
                     <List.Leading>
                       <Badge background={BadgeColor} size="small">

@@ -50,6 +50,7 @@ export const PostForm = () => {
     setErrors({});
     if (name === "title") setTitle(value);
     if (name === "summary") setSummary(value);
+    if (name === "category") setCategory(category);
   };
 
   const handleEditorChange = (value?: string) => {
