@@ -15,7 +15,7 @@ export interface IconButtonProps {
   iconSize?: IconSize;
   configuration?: "icon" | "label-icon";
   icon?: React.ReactNode;
-  label?: string;
+  label?: React.ReactNode;
   disabled?: boolean;
   onClick?: () => void;
 }
@@ -46,7 +46,7 @@ export const Label = ({
   text,
   variant,
 }: {
-  text: string;
+  text: React.ReactNode;
   variant?: ButtonVaiant;
 }) => {
   return (
