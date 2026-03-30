@@ -27,9 +27,11 @@ const StyledLabel = styled.label`
 
 const StyledSelect = styled.div<{ disabled?: boolean }>`
   width: 185px;
-  padding: 4px 0;
+  padding: 8px;
   border-radius: 8px;
-  background-color: ${({ disabled }) => disabled && `var(--color-gray-20)`};
+  border: 1px solid;
+  border-color: var(--color-gray-300);
+  background-color: ${({ disabled }) => disabled && `var(--color-gray-200)`};
   opacity: ${({ disabled }) => disabled && 0.5};
   cursor: pointer;
 `;
@@ -49,7 +51,7 @@ const OptionItem = styled.li`
   &:hover {
     background: var(--color-gray-100);
     border-radius:4px;
-     transform: scale(0.97);
+    transform: scale(0.97);
   }
   &:active {
     transform: scale(0.97;
