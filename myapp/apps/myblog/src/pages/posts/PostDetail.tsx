@@ -7,7 +7,13 @@ import { useNavigate, useParams } from "react-router";
 import { useGetPostId } from "../../hooks/useGetPostId";
 import MDEditor from "@uiw/react-md-editor";
 import { Timestamp } from "firebase/firestore";
-import { startTransition, useContext, useOptimistic } from "react";
+import {
+  startTransition,
+  useContext,
+  useEffect,
+  useOptimistic,
+  useState,
+} from "react";
 import AuthContext from "../../context/AuthContext";
 import { useDeletePost } from "../../hooks/useDeletePost";
 import "../../assets/css/markdown.css";
@@ -20,34 +26,29 @@ function PostDetail() {
   const { data: post } = useGetPostId(id);
   const { mutate: deletePost } = useDeletePost();
   const { mutateAsync: updateLike } = useUpdateLike();
-
-  const count = post?.likeCount ?? 0;
-
+  const initialCount = post?.likeCount ?? 0;
+  const [count, setCount] = useState<number>(initialCount);
   const [optimisticCount, addOptimisticLike] = useOptimistic<number, number>(
     count,
     (current, delta) => current + delta,
   );
 
   const handleLikeButton = () => {
-    if (!post) return;
-
-    const nextCount = count + 1;
-
-    startTransition(async () => {
+    startTransition(() => {
       addOptimisticLike(1);
-
-      try {
-        await updateLike({
+      if (post) {
+        const newCount = count + 1;
+        updateLike({
           id: post.id,
           data: {
-            likeCount: nextCount,
+            likeCount: newCount,
           },
         });
-      } catch {
-        addOptimisticLike(-1);
+        setCount(newCount);
       }
     });
   };
+
   const handleDelete = (id: string, e?: React.MouseEvent) => {
     e?.stopPropagation();
     const ok = window.confirm("삭제하시겠습니까?");
@@ -62,6 +63,13 @@ function PostDetail() {
       : post?.category === "프로젝트"
         ? "blue500"
         : "pink500";
+
+  useEffect(() => {
+    if (typeof post?.likeCount === "number") {
+      setCount(post.likeCount);
+    }
+  }, [post?.likeCount]);
+
   return (
     <InnerSection>
       <Badge background={BadgeColor} size="small">
@@ -89,13 +97,16 @@ function PostDetail() {
       <Spacing y={48} />
       {post && <MDEditor.Markdown source={post.content} />}
       <Spacing y={48} />
-      <Tooltip content="좋아요를 눌러주세요">
-        <IconButton
-          icon={<>💙</>}
-          label={<>optimisticCount</>}
-          onClick={handleLikeButton}
-        />
-      </Tooltip>
+      <Flex justifyContent="center">
+        <Tooltip content="좋아요를 눌러주세요" placement="bottom">
+          <IconButton
+            icon={<>💙</>}
+            label={optimisticCount}
+            onClick={handleLikeButton}
+          />
+        </Tooltip>
+      </Flex>
+
       <Spacing y={48} />
       {!!user && (
         <Flex justifyContent="end" gap={12}>
