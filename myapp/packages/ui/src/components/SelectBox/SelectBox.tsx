@@ -50,11 +50,11 @@ const OptionItem = styled.li`
   transition: all ease 0.2s;
   &:hover {
     background: var(--color-gray-100);
-    border-radius:4px;
+    border-radius: 4px;
     transform: scale(0.97);
   }
   &:active {
-    transform: scale(0.97;
+    transform: scale(0.97);
   }
 `;
 
