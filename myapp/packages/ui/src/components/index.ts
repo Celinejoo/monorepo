@@ -14,3 +14,4 @@ export * from "./Spinner";
 export * from "./Accordion";
 export * from "./IconButton";
 export * from "./Tooltip";
+export * from "./ScrollAnimation";
