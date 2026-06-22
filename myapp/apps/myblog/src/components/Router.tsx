@@ -7,6 +7,8 @@ import Login from "../pages/Login";
 import { Suspense } from "react";
 
 import { LoadingPage } from "./Loading";
+import Portfolio from "../pages/Portfolio";
+import { ProjectDetail } from "../pages/projects/ProjectDetail";
 
 interface RouterProps {
   isAuth: boolean;
@@ -31,6 +33,8 @@ function Router({ isAuth }: RouterProps) {
           <Route path="/posts/new" element={<PostNew />} />
           <Route path="/posts/:id" element={<PostDetail />} />
           <Route path="/posts/edit/:id" element={<PostEdit />} />
+          <Route path="/portfolio" element={<Portfolio />} />
+          <Route path="/portfolio/:id" element={<ProjectDetail />} />
           <Route path="/*" element={<Navigate replace to="/" />} />
         </>
       ) : (
@@ -45,6 +49,8 @@ function Router({ isAuth }: RouterProps) {
           />
           <Route path="/login" element={<Login />} />
           <Route path="/posts/:id" element={<PostDetail />} />
+          <Route path="/portfolio" element={<Portfolio />} />
+          <Route path="/portfolio/:id" element={<ProjectDetail />} />
           <Route path="/*" element={<Navigate replace to="/" />} />
         </>
       )}
