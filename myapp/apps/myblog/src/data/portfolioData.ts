@@ -87,8 +87,8 @@ export const data = [
     skill: ["React", "TypeScript", "scss (css module)", "Storybook"],
 
     images: [
-      "https://res.cloudinary.com/dkvn4lmev/image/upload/v1782117731/%E1%84%8C%E1%85%A1%E1%84%83%E1%85%A9%E1%86%BC%E1%84%8E%E1%85%A11_kwzdov.png",
-      "https://res.cloudinary.com/dkvn4lmev/image/upload/v1782117732/%E1%84%8C%E1%85%A1%E1%84%83%E1%85%A9%E1%86%BC%E1%84%8E%E1%85%A12_lx43x6.png",
+      "https://res.cloudinary.com/dkvn4lmev/image/upload/v1782207159/%E1%84%8C%E1%85%A1%E1%84%83%E1%85%A9%E1%86%BC%E1%84%8E%E1%85%A11_kwzdov_dagc5m.webp",
+      "https://res.cloudinary.com/dkvn4lmev/image/upload/v1782207160/%E1%84%8C%E1%85%A1%E1%84%83%E1%85%A9%E1%86%BC%E1%84%8E%E1%85%A12_lx43x6_lptaic.webp",
     ],
   },
   {
