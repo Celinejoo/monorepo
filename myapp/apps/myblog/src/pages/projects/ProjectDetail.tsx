@@ -80,11 +80,27 @@ export const ProjectDetail = () => {
         기여한 부분
       </Paragraph>
       <Spacing y={16} />
-      {project.role?.map((item) => (
-        <Paragraph typography="sub2" color="gray500">
-          {item}
-        </Paragraph>
+
+      {project.role?.map((role) => (
+        <>
+          <div>
+            <Paragraph typography="sub2" color="gray500" fontWeight="semibold">
+              {role.category}
+            </Paragraph>
+            <Spacing y={4} />
+            {role.details.map((detail) => (
+              <>
+                <Paragraph typography="sub3" color="gray500">
+                  {detail}
+                </Paragraph>
+                <Spacing y={4} />
+              </>
+            ))}
+          </div>
+          <Spacing y={8} />
+        </>
       ))}
+
       <Spacing y={16} />
       <Paragraph typography="sub2" color="blue500" fontWeight="bold">
         Skills

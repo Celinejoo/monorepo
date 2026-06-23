@@ -44,19 +44,23 @@ export const projectData = [
     projects: [
       {
         title: "PUBLISH Wallet 크롬 익스텐션",
-        period: "2022.08 - 2022.10",
+        period: "2022.11 - 2022.12",
       },
       {
-        title: "한국 기자협회 기자증 발급 서비스",
-        period: "2022.05 - 2022.10",
+        title: "조선일보 포인트 관리 시스템",
+        period: "2022.10 - 2022.11",
       },
       {
         title: "PUBLISHlink 댓글 서비스",
-        period: "2022.06 - 2022.09",
+        period: "2022.06 - 2022.07",
+      },
+      {
+        title: "한국기자협회 기자증 발급 서비스",
+        period: "2022.05 - 2022.06",
       },
       {
         title: "PUBLISHlink NFT 전시 서비스",
-        period: "2022.03 - 2022.06",
+        period: "2022.03 - 2022.04",
       },
       {
         title: "PUBLISHMint",
