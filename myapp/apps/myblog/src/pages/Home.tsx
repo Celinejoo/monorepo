@@ -67,9 +67,7 @@ function Home() {
             color="text"
             size="medium"
             onClick={() => {
-              navigate(
-                `https://indigo-andesaurus-e0c.notion.site/Portfolio-1c809d179e1080fa95aeecabf67d7978?pvs=73/`,
-              );
+              navigate(`/portfolio`);
             }}
           >
             포트폴리오 보러가기
