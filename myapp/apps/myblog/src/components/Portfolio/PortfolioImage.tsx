@@ -3,7 +3,7 @@ import { Badge, CardContents, CardHeader, Flex, Paragraph } from "@repo/ui";
 import { Spacing } from "../Spacing";
 
 type PortfolioCardProps = {
-  id: number;
+  id: number | string;
   tag?: string;
   title: string;
   date?: string;

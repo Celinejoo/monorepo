@@ -9,11 +9,9 @@ import { WrapComponent } from "../../components/Portfolio/Wrap";
 export const ProjectDetail = () => {
   const { id } = useParams();
 
-  const project = data.find((item) => item.id === Number(id));
+  const project = data.find((item) => item.id === id || item.id === Number(id));
 
   useEffect(() => {
-    document.documentElement.setAttribute("data-theme", "dark");
-
     return () => {
       document.documentElement.removeAttribute("data-theme");
     };
@@ -26,8 +24,20 @@ export const ProjectDetail = () => {
   const skillColors: Record<
     string,
     {
-      background: "cyan100" | "blue100" | "pink100" | "green500" | "pink600";
-      color: "pink700" | "cyan700" | "blue700" | "pink600" | "pink100";
+      background:
+        | "cyan100"
+        | "blue100"
+        | "pink100"
+        | "green500"
+        | "pink600"
+        | "white0";
+      color:
+        | "pink700"
+        | "cyan700"
+        | "blue700"
+        | "pink600"
+        | "pink100"
+        | "black";
     }
   > = {
     React: { background: "cyan100", color: "cyan700" },
@@ -43,14 +53,18 @@ export const ProjectDetail = () => {
       background: "pink600",
       color: "pink100",
     },
+    Recoil: {
+      background: "white0",
+      color: "black",
+    },
   };
   return (
     <WrapComponent>
-      <Paragraph typography="t3" color="blue500" fontWeight="bold">
+      <Paragraph typography="t2" color="blue500" fontWeight="bold">
         {project.title}
       </Paragraph>
       <Spacing y={8} />
-      <Paragraph typography="sub3" color="gray500">
+      <Paragraph typography="sub4" color="gray500">
         {project.date}
       </Paragraph>
       <Spacing y={16} />
@@ -58,7 +72,7 @@ export const ProjectDetail = () => {
         {project.desc}
       </Paragraph>
       <Spacing y={16} />
-      <Paragraph typography="sub2" color="blue500" fontWeight="bold">
+      <Paragraph typography="sub1" color="blue500" fontWeight="bold">
         구현화면
       </Paragraph>
       <Spacing y={16} />
@@ -76,7 +90,7 @@ export const ProjectDetail = () => {
           <img src={item} alt="구현된 화면" width="50%" />
         ))}
       </Flex>
-      <Paragraph typography="sub2" color="blue500" fontWeight="bold">
+      <Paragraph typography="sub1" color="blue500" fontWeight="bold">
         기여한 부분
       </Paragraph>
       <Spacing y={16} />
