@@ -13,6 +13,8 @@ coverage
 out/
 build
 
+.firebase
+
 # outputs
 dist
 
