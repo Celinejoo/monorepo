@@ -49,7 +49,14 @@ export const data = [
         ],
       },
     ],
-    skill: ["React", "TypeScript", "scss (css module)", "Storybook"],
+    skill: [
+      "React",
+      "TypeScript",
+      "scss (css module)",
+      "React-Query",
+      "Recoil",
+      "Storybook",
+    ],
     images: [
       "https://res.cloudinary.com/dkvn4lmev/image/upload/v1782314261/%E1%84%82%E1%85%A2%E1%84%8B%E1%85%A7%E1%86%A8%E1%84%89%E1%85%A1%E1%86%BC%E1%84%89%E1%85%A6_gwbcfe.webp",
     ],
@@ -118,33 +125,58 @@ export const data = [
     date: "2023.11 - 2024. 07",
     summary:
       "사용자가 설정한 조건에 따라 제휴 보험사의 보험료를 한눈에 비교하고 가입할 수 있는 신규 서비스",
-    desc: `사용자가 설정한 조건에 따라 제휴 보험사의 보험료를 한눈에 비교하고 가입할 수 있는 신규 서비스입니다. \n가입 건당 수수료 매출을 발생시켜 보험 매출 증대에 기여할 수 있는 서비스 입니다.`,
+    desc: `사용자가 설정한 조건에 따라 제휴 보험사의 보험료를 한눈에 비교하고 가입할 수 있는 신규 서비스입니다.
+    가입 건당 수수료 매출을 발생시켜 보험 매출 증대에 기여할 수 있는 서비스 입니다.`,
     role: [
       {
-        category: "UI/UX 구현",
+        category: "Lottie 기반 애니메이션 적용",
         details: [
-          "웹 접근성과 웹 표준을 고려한 마크업 설계 및 개발",
-          "디자인 시스템 기반 반응형 UI 구현",
-          "Lottie 및 플립 카드 인터랙션 적용을 통한 사용자 경험 향상",
-          "react-intersection-observer를 활용한 조건부 플로팅 버튼 노출 구현",
+          `온보딩 페이지에 Lottie 기반 애니메이션을 적용하여 사용자의 몰입도를 높여 서비스 전환률을 높이고자 했습니다.
+          웹 성능 향상을 위해 대용량 JSON 파일을 차세대 압축 아카이브인 '.lottie' 포맷으로 변환하여 초기 로딩 속도를 최소화하고,
+          사용자가 화면을 스크롤할 때 애니메이션 요소가 자연스럽게 나타나도록 스크롤 트리거(Scroll Trigger)기반의 인터랙션 구현했습니다.`,
         ],
       },
       {
-        category: "컴포넌트 설계",
+        category: "Swiper 활용",
         details: [
-          "디자인 시스템 기반 공통 컴포넌트 개발 및 적용",
-          "Storybook을 활용한 컴포넌트 문서화 및 재사용성 확보",
+          `자바스크립트 기반의 부드러운 롤링 효과와 자동 재생(Autoplay) 기능을 컴팩트하게 구현하고, 리액트의 로딩 상태(State)와 애니메이션 타이밍을 정밀하게 동기화하고자 Swiper 라이브러리를 사용했습니다. 
+          대기 시간 동안 서비스 핵심 정보를 순차적으로 노출하는 세로형 자동 재생 슬라이딩 UI(로딩 가이드 컴포넌트) 주도적 구현하고,
+          첫 슬라이드와 마지막 슬라이드가 자연스럽게 이어지도록 'loop' 모드를 활성화하고,
+          사용자가 직접 제어할 필요가 없는 로딩 화면 특성에 맞춰, 스와이프 제스처 및 터치 이벤트를 완전히 차단하여 오작동 없는 시각적 효과 본연의 가이드 목적에 집중했습니다.`,
+        ],
+      },
+      {
+        category: "스크롤 인터랙션 성능 최적화",
+        details: [
+          `기존 window scroll 이벤트와 offset 계산 기반의 스크롤 감지 방식을 인터섹션 옵저버(Intersection Observer) API로 전환 해 성능 최적화에 기여했습니다.
+          브라우저의 불필요한 리플로우(Reflow)를 차단하여 화면 버벅임 현상을 해결하고,
+          특정 UI 요소들이 화면에 노출되는 교차 시점을 비동기적으로 정밀하게 포착하여, 부드럽고 안정적인 스크롤 트리거 애니메이션 및 인터랙션 구현하고자 했습니다.`,
+        ],
+      },
+      {
+        category: "Framer-motion 기반 인터랙션 구현",
+        details: [
+          `컴포넌트의 상태 변화에 따른 선언적 애니메이션 제어 및 UI/UX 생동감 부여를 위해 Framer-motion을 사용했습니다. ,
+          플립 카드(Flip Card) UI 구현 시 'rotateY'속성과 'transform-style' 속성을 활용하여 카드가 뒤집히는 회전 효과를 자연스럽게 구현했으며,
+          미세한 상하 유동 모션이 무한 루프되는 부드러운 플로팅 애니메이션(Floating Animation) 구현했습니다.
+          애니메이션 컴포넌트의 마운트/언마운트 및 트랜지션 타이밍을 정밀하게 조율하여 브라우저 프레임 드랍 없이 고품질의 시각적 피드백 제공할 수 있었습니다.`,
         ],
       },
       {
         category: "품질 개선",
         details: [
-          "QA 결과 기반 UI/UX 정합성 개선 및 품질 확보",
-          "UI 관련 QA 이슈 감소를 통한 서비스 안정성 향상",
+          "QA 결과 기반 UI/UX 정합성 개선 및 품질 확보를 했으며 기존 UI 관련 QA 이슈 50% 감소를 통한 서비스 안정성 향상해 기여했습니다.",
         ],
       },
     ],
-    skill: ["React", "TypeScript", "scss (css module)", "Storybook"],
+    skill: [
+      "React",
+      "TypeScript",
+      "scss (css module)",
+      "React-Query",
+      "recoil",
+      "Storybook",
+    ],
 
     images: [
       "https://res.cloudinary.com/dkvn4lmev/image/upload/v1782207159/%E1%84%8C%E1%85%A1%E1%84%83%E1%85%A9%E1%86%BC%E1%84%8E%E1%85%A11_kwzdov_dagc5m.webp",
@@ -152,14 +184,51 @@ export const data = [
     ],
   },
   {
-    id: 4,
+    id: "publishlink",
     tag: "퍼블리시",
     title: "PUBLISHlink(서비스종료)",
-    summary: `퍼블리시와 협약된 각 언론사에게 프로젝트 핵심 요소인 ‘위젯’을 코드로 제공하여 모든 기사 페이지에 삽입하고 독자는 이를 통해 기사를 소비(읽기, 공유하기 등)할 때마다 암호화폐 리 워드를 적립 받을 수 있는 서비스`,
-    desc: ``,
+    summary: `퍼블리시와 협약된 각 언론사에게 프로젝트 핵심 요소인 ‘위젯’을 코드로 제공하여 모든 기사 페이지에 삽입하고 독자는 이를 통해 기사를 소비(읽기, 공유하기 등)할 때마다 암호화폐 리워드를 적립 받을 수 있는 서비스`,
+    desc: `대부분의 언론사들이 광고 수익에 지나치게 의존하고 있는 문제점과 대다수의 독자들의 포털 사이트를 통해 뉴스를 소비하기 때문에 자체 플랫폼에서 직접 광고를 통해 수익을 창출 하는 어려움이 있었습니다. 언론사 플랫폼에 방문해서 뉴스를 소비할 시 현금화 할 수 있는 암호화폐를 보상을 제공해 독자를 활보하고 방문률 증가를 목표로 서비스를 출시했습니다. 퍼블리시와 협약된 각 언론사에게 위젯을 코드로 제공하고, 기사 페이지에 삽입하여 기사가 소비 될 때 암호화폐를 적립받을 수 있는 서비스 입니다.`,
     image:
       "https://res.cloudinary.com/dkvn4lmev/image/upload/v1782205311/%E1%84%89%E1%85%B3%E1%84%8F%E1%85%B3%E1%84%85%E1%85%B5%E1%86%AB%E1%84%89%E1%85%A3%E1%86%BA_2023-09-17_%E1%84%8B%E1%85%A9%E1%84%92%E1%85%AE_8.55.13_uccfpd.webp",
-    role: [],
+    role: [
+      {
+        category: "비즈니스 로직을 고려한 UI 설계",
+        details: [
+          `다양한 사용자 시나리오와 비즈니스 로직을 고려하여 UI를 설계했습니다. 데이터 유무, 권한, 로딩, 오류, 완료 상태 등 다양한 분기 상황에 대응하는 화면을 구현하여 사용자가 현재 상태를 명확하게 인지할 수 있도록 했으며, 일관된 사용자 경험과 서비스 신뢰성을 높였습니다.`,
+        ],
+      },
+      {
+        category: "개발 환경 및 공통 스타일 시스템 구축",
+        details: [
+          `프로젝트 초기 CSS 아키텍처를 설계하여 공통 스타일을 관리하여 UI 일관성을 확보하고, 유지보수성과 개발 효율을 향싱 시키고자 했습니다.reset.css를 통해 브라우저 기본 스타일을 초기화하고, font.css에서 웹 폰트와 타이포그래피 스타일을 정의했습니다. common.css에는 버튼, 입력폼 등 공통 UI 스타일을 정의했으며, utility.css를 작성하여 자주 사용하는 스타일을 클래스화해 재사용성을 높였습니다. 이를 통해 중복 스타일 작성이 감소하고 신규 화면 개발 및 디자인 변경을 보다 효율적으로 진행할 수 있었습니다. `,
+        ],
+      },
+      {
+        category: "화면 요소 모듈화",
+        details: [
+          `PHP Volt Template Engine을 환경에서 반복되는 화면 요소인 Header, Footer, Header, Footer, Contents, Background, Navigation 등을 컴포넌트화하고 include 및 extends 구조를 활용하여 공통 레이아웃 관리했습니다. 중복 마크업이 감소하고, 공통 블록만 수정하면 전체에 반영되어 개발 속도 향상에 기여했습니다.`,
+        ],
+      },
+      {
+        category: "반응형 UI 구현",
+        details: [
+          `해상도 점유율과 디자인 가이드를 기반으로 Desktop(1920px), Tablet(768px), Mobile(360px)을 기준으로 반응형 UI를 구현했습니다. CSS Media Query와 유동적인 레이아웃을 적용해 화면 크기에 따라 콘텐츠와 컴포넌트를 최적화했으며, 다양한 디바이스 환경에서도 일관된 사용자 경험을 제공할 수 있도록 개발했습니다`,
+        ],
+      },
+      {
+        category: "Swiper, Datepicker 등 다양한 라이브러리 활용 및 적용",
+        details: [
+          `Swiper, Datepicker 등 다양한 UI 라이브러리를 프로젝트 요구사항에 맞게 적용하고 커스터마이징하여 슬라이더, 날짜 선택 등 인터랙션 기능을 구현했습니다. 기존 UI와 일관성을 유지하도록 스타일을 조정하고, 재사용 가능한 형태로 적용하여 사용자 경험과 개발 생산성을 향상시켰습니다.`,
+        ],
+      },
+      {
+        category: "Bootstrap을 활용한 Admin/SuperAdmin 구축",
+        details: [
+          `Bootstrap을 활용해 Admin 및 SuperAdmin 페이지를 구축하고 공통 UI 컴포넌트를 표준화했습니다. 반응형 레이아웃을 적용하여 다양한 관리 화면을 구현했으며, 공통 스타일과 컴포넌트 재사용을 통해 일관된 사용자 경험과 유지보수 효율을 높였습니다.`,
+        ],
+      },
+    ],
     images: [
       "https://res.cloudinary.com/dkvn4lmev/image/upload/v1782205311/%E1%84%89%E1%85%B3%E1%84%8F%E1%85%B3%E1%84%85%E1%85%B5%E1%86%AB%E1%84%89%E1%85%A3%E1%86%BA_2023-09-17_%E1%84%8B%E1%85%A9%E1%84%92%E1%85%AE_8.55.13_uccfpd.webp",
       "https://res.cloudinary.com/dkvn4lmev/image/upload/v1782314935/%E1%84%91%E1%85%A5%E1%84%87%E1%85%B3%E1%86%AF%E1%84%85%E1%85%B5%E1%84%89%E1%85%B5_ywierz.webp",
@@ -167,17 +236,17 @@ export const data = [
 
     skill: ["HTML5", "CSS3", "javascript", "jQuery", "volt"],
   },
-  {
-    id: 5,
-    tag: "퍼블리시",
-    title: "뉴스토마스(서비스종료)",
-    summary: ``,
-    desc: ``,
-    image:
-      "https://res.cloudinary.com/dkvn4lmev/image/upload/v1782206492/Gemini_Generated_Image_52nstj52nstj52ns_g3g6fc.png",
-    role: [],
-    skill: ["HTML5", "CSS3", "javascript", "jQuery", "volt"],
-  },
+  // {
+  //   id: 5,
+  //   tag: "퍼블리시",
+  //   title: "뉴스토마스(서비스종료)",
+  //   summary: ``,
+  //   desc: ``,
+  //   image:
+  //     "https://res.cloudinary.com/dkvn4lmev/image/upload/v1782206492/Gemini_Generated_Image_52nstj52nstj52ns_g3g6fc.png",
+  //   role: [],
+  //   skill: ["HTML5", "CSS3", "javascript", "jQuery", "volt"],
+  // },
   {
     id: 6,
     tag: "개인 프로젝트",
