@@ -58,6 +58,7 @@ function Portfolio() {
             <PortfolioImage
               id={item.id}
               tag={item.tag}
+              contribution={item.contribution}
               summary={item.summary}
               title={item.title}
               skill={item.skill}

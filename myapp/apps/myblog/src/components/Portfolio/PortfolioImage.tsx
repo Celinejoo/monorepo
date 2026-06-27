@@ -8,6 +8,7 @@ type PortfolioCardProps = {
   title: string;
   date?: string;
   summary?: string;
+  contribution?: string;
   desc?: string;
   role?: string[];
   skill?: string[];
@@ -16,7 +17,7 @@ type PortfolioCardProps = {
 };
 
 const CardWrap = styled.div`
-  min-height: 450px;
+  min-height: 520px;
   padding: 20px;
   border-radius: 24px;
 
@@ -39,6 +40,7 @@ export const PortfolioImage = ({
   summary,
   skill,
   image,
+  contribution,
 }: PortfolioCardProps) => {
   const skillColors: Record<
     string,
@@ -64,16 +66,23 @@ export const PortfolioImage = ({
   return (
     <CardWrap>
       <CardHeader>
-        <Paragraph typography="sub4" color="gray500">
+        <Paragraph typography="sub3" color="gray500">
           {tag}
         </Paragraph>
         <Spacing y={4} />
-        <Paragraph typography="sub2" color="blue500" fontWeight="bold">
+        <Paragraph typography="sub1" color="blue500" fontWeight="bold">
           {title}
         </Paragraph>
-        <Spacing y={8} />
-        <Paragraph typography="sub3" color="gray500">
+        <Spacing y={4} />
+        <Paragraph typography="sub2" color="gray500">
           {summary}
+        </Paragraph>
+        <Spacing y={8} />
+        <Paragraph typography="sub2" color="blue600" fontWeight="bold">
+          기여도
+        </Paragraph>
+        <Paragraph typography="sub2" color="gray500">
+          {contribution}
         </Paragraph>
       </CardHeader>
       <CardContents>
@@ -94,7 +103,6 @@ export const PortfolioImage = ({
             );
           })}
         </Flex>
-        <Spacing y={8} />
       </CardContents>
     </CardWrap>
   );

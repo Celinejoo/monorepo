@@ -12,6 +12,8 @@ export const ProjectDetail = () => {
   const project = data.find((item) => item.id === id || item.id === Number(id));
 
   useEffect(() => {
+    document.documentElement.setAttribute("data-theme", "dark");
+
     return () => {
       document.documentElement.removeAttribute("data-theme");
     };
@@ -68,11 +70,11 @@ export const ProjectDetail = () => {
         {project.date}
       </Paragraph>
       <Spacing y={16} />
-      <Paragraph typography="sub3" color="gray500">
+      <Paragraph typography="sub3" color="gray600">
         {project.desc}
       </Paragraph>
       <Spacing y={16} />
-      <Paragraph typography="sub1" color="blue500" fontWeight="bold">
+      <Paragraph typography="sub1" color="blue600" fontWeight="bold">
         구현화면
       </Paragraph>
       <Spacing y={16} />
@@ -98,13 +100,13 @@ export const ProjectDetail = () => {
       {project.role?.map((role) => (
         <>
           <div>
-            <Paragraph typography="sub2" color="gray500" fontWeight="semibold">
+            <Paragraph typography="sub2" color="blue400" fontWeight="semibold">
               {role.category}
             </Paragraph>
             <Spacing y={4} />
             {role.details.map((detail) => (
               <>
-                <Paragraph typography="sub3" color="gray500">
+                <Paragraph typography="sub3" color="gray600">
                   {detail}
                 </Paragraph>
                 <Spacing y={4} />
