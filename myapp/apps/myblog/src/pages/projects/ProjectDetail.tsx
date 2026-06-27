@@ -66,32 +66,41 @@ export const ProjectDetail = () => {
         {project.title}
       </Paragraph>
       <Spacing y={8} />
-      <Paragraph typography="sub4" color="gray500">
-        {project.date}
-      </Paragraph>
-      <Spacing y={16} />
-      <Paragraph typography="sub3" color="gray600">
-        {project.desc}
-      </Paragraph>
-      <Spacing y={16} />
+      {project.date && (
+        <>
+          <Paragraph typography="sub3" color="gray500">
+            {project.date}
+          </Paragraph>
+          <Spacing y={16} />
+        </>
+      )}
+      {project.desc && (
+        <>
+          <Paragraph typography="sub2" color="gray600">
+            {project.desc}
+          </Paragraph>
+          <Spacing y={16} />
+        </>
+      )}
       <Paragraph typography="sub1" color="blue600" fontWeight="bold">
         구현화면
       </Paragraph>
       <Spacing y={16} />
       {project.link && project.buttonLabel ? (
-        <Link to={project.link}>
+        <Link to={project.link} target="_blank">
           <Button variant="fill" size="small" color="primary">
             {project.buttonLabel}
           </Button>
         </Link>
       ) : null}
       <Spacing y={16} />
-
-      <Flex wrap="wrap" justifyContent="center" gap={16}>
-        {project.images?.map((item) => (
-          <img src={item} alt="구현된 화면" width="50%" />
-        ))}
-      </Flex>
+      {project.images && (
+        <Flex wrap="wrap" justifyContent="center" gap={16}>
+          {project.images?.map((item) => (
+            <img src={item} alt="구현된 화면" width="50%" />
+          ))}
+        </Flex>
+      )}
       <Paragraph typography="sub1" color="blue500" fontWeight="bold">
         기여한 부분
       </Paragraph>
@@ -118,7 +127,7 @@ export const ProjectDetail = () => {
       ))}
 
       <Spacing y={16} />
-      <Paragraph typography="sub2" color="blue500" fontWeight="bold">
+      <Paragraph typography="sub1" color="blue500" fontWeight="bold">
         Skills
       </Paragraph>
       <Spacing y={16} />

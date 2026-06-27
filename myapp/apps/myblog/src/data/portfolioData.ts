@@ -190,6 +190,9 @@ export const data = [
     id: "publishlink",
     tag: "퍼블리시",
     title: "PUBLISHlink(서비스종료)",
+    date: "2021.09 - 2022.12",
+    buttonLabel: "구현화면 자세히 보러가기",
+    link: "https://indigo-andesaurus-e0c.notion.site/PUBLISHlink-3d61bcc075f04598ac3e76387169bca2",
     summary: `퍼블리시와 협약된 각 언론사에게 프로젝트 핵심 요소인 ‘위젯’을 코드로 제공하여 모든 기사 페이지에 삽입하고 독자는 이를 통해 기사를 소비(읽기, 공유하기 등)할 때마다 암호화폐 리워드를 적립 받을 수 있는 서비스`,
     contribution: "웹 퍼블리싱 80%",
     desc: `대부분의 언론사들이 광고 수익에 지나치게 의존하고 있는 문제점과 대다수의 독자들의 포털 사이트를 통해 뉴스를 소비하기 때문에 자체 플랫폼에서 직접 광고를 통해 수익을 창출 하는 어려움이 있었습니다. 언론사 플랫폼에 방문해서 뉴스를 소비할 시 현금화 할 수 있는 암호화폐를 보상을 제공해 독자를 활보하고 방문률 증가를 목표로 서비스를 출시했습니다. 퍼블리시와 협약된 각 언론사에게 위젯을 코드로 제공하고, 기사 페이지에 삽입하여 기사가 소비 될 때 암호화폐를 적립받을 수 있는 서비스 입니다.`,
@@ -199,37 +202,45 @@ export const data = [
       {
         category: "비즈니스 로직을 고려한 UI 설계",
         details: [
-          `다양한 사용자 시나리오와 비즈니스 로직을 고려하여 UI를 설계했습니다. 데이터 유무, 권한, 로딩, 오류, 완료 상태 등 다양한 분기 상황에 대응하는 화면을 구현하여 사용자가 현재 상태를 명확하게 인지할 수 있도록 했으며, 일관된 사용자 경험과 서비스 신뢰성을 높였습니다.`,
+          `다양한 사용자 시나리오와 비즈니스 로직을 고려하여 UI를 설계했습니다. 
+          데이터 유무, 권한, 로딩, 오류, 완료 상태 등 다양한 분기 상황에 대응하는 화면을 구현하여 사용자가 현재 상태를 명확하게 인지할 수 있도록 했으며, 일관된 사용자 경험과 서비스 신뢰성을 높였습니다.`,
         ],
       },
       {
         category: "개발 환경 및 공통 스타일 시스템 구축",
         details: [
-          `프로젝트 초기 CSS 아키텍처를 설계하여 공통 스타일을 관리하여 UI 일관성을 확보하고, 유지보수성과 개발 효율을 향싱 시키고자 했습니다.reset.css를 통해 브라우저 기본 스타일을 초기화하고, font.css에서 웹 폰트와 타이포그래피 스타일을 정의했습니다. common.css에는 버튼, 입력폼 등 공통 UI 스타일을 정의했으며, utility.css를 작성하여 자주 사용하는 스타일을 클래스화해 재사용성을 높였습니다. 이를 통해 중복 스타일 작성이 감소하고 신규 화면 개발 및 디자인 변경을 보다 효율적으로 진행할 수 있었습니다. `,
+          `프로젝트 초기 CSS 아키텍처를 설계하여 공통 스타일을 관리하여 UI 일관성을 확보하고, 유지보수성과 개발 효율을 향싱 시키고자 했습니다.
+          reset.css를 통해 브라우저 기본 스타일을 초기화하고, font.css에서 웹 폰트와 타이포그래피 스타일을 정의했습니다. 
+          common.css에는 버튼, 입력폼 등 공통 UI 스타일을 정의했으며, utility.css를 작성하여 자주 사용하는 스타일을 클래스화해 재사용성을 높였습니다. 
+          이를 통해 중복 스타일 작성이 감소하고 신규 화면 개발 및 디자인 변경을 보다 효율적으로 진행할 수 있었습니다.`,
         ],
       },
       {
         category: "화면 요소 모듈화",
         details: [
-          `PHP Volt Template Engine을 환경에서 반복되는 화면 요소인 Header, Footer, Header, Footer, Contents, Background, Navigation 등을 컴포넌트화하고 include 및 extends 구조를 활용하여 공통 레이아웃 관리했습니다. 중복 마크업이 감소하고, 공통 블록만 수정하면 전체에 반영되어 개발 속도 향상에 기여했습니다.`,
+          `PHP Volt Template Engine을 환경에서 반복되는 화면 요소인 Header, Footer, Header, Footer, Contents, Background, Navigation 등을 컴포넌트화하고 include 및 extends 구조를 활용하여 공통 레이아웃 관리했습니다.
+          중복 마크업이 감소하고, 공통 블록만 수정하면 전체에 반영되어 개발 속도 향상에 기여했습니다.`,
         ],
       },
       {
         category: "반응형 UI 구현",
         details: [
-          `해상도 점유율과 디자인 가이드를 기반으로 Desktop(1920px), Tablet(768px), Mobile(360px)을 기준으로 반응형 UI를 구현했습니다. CSS Media Query와 유동적인 레이아웃을 적용해 화면 크기에 따라 콘텐츠와 컴포넌트를 최적화했으며, 다양한 디바이스 환경에서도 일관된 사용자 경험을 제공할 수 있도록 개발했습니다`,
+          `해상도 점유율과 디자인 가이드를 기반으로 Desktop(1920px), Tablet(768px), Mobile(360px)을 기준으로 반응형 UI를 구현했습니다.
+          CSS Media Query와 유동적인 레이아웃을 적용해 화면 크기에 따라 콘텐츠와 컴포넌트를 최적화했으며, 다양한 디바이스 환경에서도 일관된 사용자 경험을 제공할 수 있도록 개발했습니다.`,
         ],
       },
       {
         category: "Swiper, Datepicker 등 다양한 라이브러리 활용 및 적용",
         details: [
-          `Swiper, Datepicker 등 다양한 UI 라이브러리를 프로젝트 요구사항에 맞게 적용하고 커스터마이징하여 슬라이더, 날짜 선택 등 인터랙션 기능을 구현했습니다. 기존 UI와 일관성을 유지하도록 스타일을 조정하고, 재사용 가능한 형태로 적용하여 사용자 경험과 개발 생산성을 향상시켰습니다.`,
+          `Swiper, Datepicker 등 다양한 UI 라이브러리를 프로젝트 요구사항에 맞게 적용하고 커스터마이징하여 슬라이더, 날짜 선택 등 인터랙션 기능을 구현했습니다. 
+          기존 UI와 일관성을 유지하도록 스타일을 조정하고, 재사용 가능한 형태로 적용하여 사용자 경험과 개발 생산성을 향상시켰습니다.`,
         ],
       },
       {
         category: "Bootstrap을 활용한 Admin/SuperAdmin 구축",
         details: [
-          `Bootstrap을 활용해 Admin 및 SuperAdmin 페이지를 구축하고 공통 UI 컴포넌트를 표준화했습니다. 반응형 레이아웃을 적용하여 다양한 관리 화면을 구현했으며, 공통 스타일과 컴포넌트 재사용을 통해 일관된 사용자 경험과 유지보수 효율을 높였습니다.`,
+          `Bootstrap을 활용해 Admin 및 SuperAdmin 페이지를 구축하고 공통 UI 컴포넌트를 표준화했습니다.
+          반응형 레이아웃을 적용하여 다양한 관리 화면을 구현했으며, 공통 스타일과 컴포넌트 재사용을 통해 일관된 사용자 경험과 유지보수 효율을 높였습니다.`,
         ],
       },
     ],
@@ -238,43 +249,111 @@ export const data = [
       "https://res.cloudinary.com/dkvn4lmev/image/upload/v1782314935/%E1%84%91%E1%85%A5%E1%84%87%E1%85%B3%E1%86%AF%E1%84%85%E1%85%B5%E1%84%89%E1%85%B5_ywierz.webp",
     ],
 
-    skill: ["HTML5", "CSS3", "javascript", "jQuery", "volt"],
+    skill: ["HTML5", "CSS3", "javascript", "jQuery", "PHP volt"],
   },
-  // {
-  //   id: 5,
-  //   tag: "퍼블리시",
-  //   title: "뉴스토마스(서비스종료)",
-  //   summary: ``,
-  //   desc: ``,
-  //   image:
-  //     "https://res.cloudinary.com/dkvn4lmev/image/upload/v1782206492/Gemini_Generated_Image_52nstj52nstj52ns_g3g6fc.png",
-  //   role: [],
-  //   skill: ["HTML5", "CSS3", "javascript", "jQuery", "volt"],
-  // },
+  {
+    id: "point",
+    tag: "퍼블리시",
+    title: "조선일보 포인트 관리 시스템",
+    date: "2022.10 - 2022.11",
+    contribution: "UI 개발 100%",
+    link: "https://indigo-andesaurus-e0c.notion.site/23a09d179e1081798180d8639c9fe8fe",
+    buttonLabel: "구현화면 보러가기",
+    image:
+      "https://res.cloudinary.com/dkvn4lmev/image/upload/v1782554443/%E1%84%89%E1%85%B3%E1%84%8F%E1%85%B3%E1%84%85%E1%85%B5%E1%86%AB%E1%84%89%E1%85%A3%E1%86%BA_2023-09-17_%E1%84%8B%E1%85%A9%E1%84%92%E1%85%AE_8.07.36_o1r6b7.webp",
+    role: [
+      {
+        category: "디자인 시스템 및 UI 가이드 구축",
+        details: [
+          `서비스 전반에서 일관된 UI를 유지하기 위해 공통 UI 가이드와 컴포넌트 규칙을 정의하고, 화면 구조, 버튼, 테이블, 팝업. 툴팁 등 공통 요소를 표준화하였습니다.
+          버튼의 경우 공통 Class로 스타일을 정의하여 버튼의 활성, 비활성, 삭제, 아웃라인, 다운로드 등 다양한 상태를 공통 클래스로 관리하여 UI 일관성과 유지보수성을 확보해 
+          디자인 변경 시 전체 서비스에 일괄 적용할 수 있도록 구성하였습니다.`,
+        ],
+      },
+      {
+        category: "라이브러리 커스터마이징",
+        details: [
+          `DateRangePicker를 서비스 디자인 가이드에 맞게 커스터마이징하여 UI 일관성을 확보하였습니다.
+          jQuery UI SelectMenu를 프로젝트 디자인에 맞게 커스터마이징하여 기본 컴포넌트를 서비스에 최적화하였습니다.`,
+        ],
+      },
+      {
+        category: "공통 Table 컴포넌트 구축",
+        details: [
+          `Table Header, Body, Footer 구조를 공통화하여 다양한 목록 화면에서 공통으로 사용할 수 있도록 화면 구현을 했습니다.
+          검색 결과 없음(No Result)과 데이터 없음(Empty State)을 구분하여 사용자 경험을 개선하고,
+          테이블 Header 및 Footer 영역을 옵션 형태로 설계하여 화면 특성에 맞게 유연하게 사용할 수 있도록 구현하였습니다.`,
+        ],
+      },
+      {
+        category: "데이터 시각화",
+        details: [
+          `Chart.js를 활용하여 관리자 대시보드의 통계 데이터를 시각화하고, Gradient Color를 적용하여 데이터 가독성과 시각적 완성도를 높였습니다.
+          차트 옵션을 커스터마이징하여 프로젝트 디자인 가이드에 맞는 통계 UI를 구현하였습니다.`,
+        ],
+      },
+    ],
+    images: [
+      "https://res.cloudinary.com/dkvn4lmev/image/upload/v1782554443/%E1%84%89%E1%85%B3%E1%84%8F%E1%85%B3%E1%84%85%E1%85%B5%E1%86%AB%E1%84%89%E1%85%A3%E1%86%BA_2023-09-17_%E1%84%8B%E1%85%A9%E1%84%92%E1%85%AE_8.07.36_o1r6b7.webp",
+      "https://res.cloudinary.com/dkvn4lmev/image/upload/v1782554553/footer_table_vpp5k5.webp",
+    ],
+    skill: ["HTML5", "CSS3", "javascript", "jQuery"],
+  },
   {
     id: 6,
     tag: "개인 프로젝트",
     title: "UI 디자인 시스템 라이브러리",
     summary: "디자인시스템 라이브러리 구축",
+    contribution: "100%",
     image:
       "https://res.cloudinary.com/dkvn4lmev/image/upload/v1782206602/Gemini_Generated_Image_nk2jzwnk2jzwnk2j_dygxnd.webp",
     desc: "모노레포(Monorepo) 구조를 기반으로 UI 컴포넌트 라이브러리를 구축했습니다. ",
-    role: [],
-    skill: ["React", "TypeScript", "Emotion"],
+    role: [
+      {
+        category: "Color · Typography 토큰화",
+        details: [
+          "Color와 Typography를 디자인 토큰으로 관리하고 CSS Variable을 런타임에 주입하는 구조를 구현하여, 모든 컴포넌트에서 일관된 디자인 값을 사용할 수 있도록 구성하였습니다.",
+        ],
+      },
+      {
+        category: "디자인 시스템 설계 및 구축",
+        details: [
+          "Apple Human Interface Guidelines(HIG), Material Design, Toss Design System, KRDS 등을 참고하여 컴포넌트의 역할과 사용 기준을 정의하고 디자인 시스템을 구축하였습니다.",
+          "디자인 토큰(@repo/tokens)과 UI 컴포넌트(@repo/ui)를 분리한 모노레포 구조를 설계하여 재사용성과 유지보수성을 높였습니다.",
+        ],
+      },
+      {
+        category: "UI 컴포넌트 개발",
+        details: [
+          "React, TypeScript 기반으로 공통 UI 컴포넌트를 개발하고 Emotion을 활용하여 일관된 스타일 시스템을 구축하였습니다.",
+          "Compound Component(컴포넌트 합성) 패턴을 적용하여 역할별 컴포넌트를 조합할 수 있는 유연한 구조를 설계하였습니다.",
+          "Controlled / Uncontrolled 패턴(value, defaultValue, onChange)을 지원하도록 구현하여 다양한 서비스 환경에서 재사용 가능하도록 설계하였습니다.",
+        ],
+      },
+      {
+        category: "Storybook 문서화",
+        details: [
+          "Storybook을 활용하여 컴포넌트별 역할, Props, 사용 예시를 문서화하고 배포하여 개발자와 디자이너가 동일한 기준으로 활용할 수 있는 환경을 구축하였습니다.",
+          "컴포넌트 인터페이스와 동작 방식을 시각적으로 검증할 수 있도록 스토리를 구성하여 협업 효율을 향상시켰습니다.",
+        ],
+      },
+      {
+        category: "개발 환경 및 빌드 구성",
+        details: [
+          "pnpm Workspace 기반의 모노레포 환경을 구성하여 디자인 토큰과 UI 패키지를 효율적으로 관리하였습니다.",
+          "Rollup을 활용하여 UI 라이브러리를 번들링하고 ESM/CJS 형식을 모두 지원하도록 구성했으며, Tree Shaking을 고려한 배포 환경을 구축하였습니다.",
+        ],
+      },
+      {
+        category: "데이터 시각화",
+        details: [
+          "Chart.js를 활용하여 관리자 대시보드의 통계 데이터를 시각화하고, Gradient Color를 적용하여 데이터 가독성과 시각적 완성도를 높였습니다.",
+          "차트 옵션을 커스터마이징하여 프로젝트 디자인 가이드에 맞는 통계 UI를 구현하고, 사용자에게 직관적인 데이터 경험을 제공하였습니다.",
+        ],
+      },
+    ],
+    skill: ["React", "TypeScript", "Emotion", "pnpm", "Storybook"],
     buttonLabel: "디자인시스템 보러가기",
     link: "https://celinejoo.github.io/monorepo/",
-  },
-  {
-    id: 7,
-    tag: "개인 프로젝트",
-    title: "개발 블로그 개설 및 운영",
-    summary: "개인 블로그 서비스 기획 및 구축",
-    desc: `Firebase를 기반으로 한 개인 블로그 서비스를 기획·구축했습니다. \n 학습 내용한 내용을 정리하고 적용하여 구축하고자 했습니다. `,
-    image:
-      "https://res.cloudinary.com/dkvn4lmev/image/upload/v1782206603/Gemini_Generated_Image_w3tt49w3tt49w3tt_bhm43u.webp",
-    role: [],
-    skill: ["React", "TypeScript", "Emotion", "FireBase"],
-    buttonLabel: "블로그 보러가기",
-    link: "https://devblog-f31ca.web.app/",
   },
 ];
