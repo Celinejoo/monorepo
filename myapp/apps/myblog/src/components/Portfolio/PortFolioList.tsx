@@ -28,12 +28,12 @@ export const PortFolioList = () => {
               {yearData.year}
             </Paragraph>
             <ul>
-              {yearData.projects.map((project) => (
-                <>
+              {yearData.projects.map((project, key) => (
+                <div key={key}>
                   <List as="li" gap={4} margin={16}>
                     <Contents title={project.title} subtitle={project.period} />
                   </List>
-                </>
+                </div>
               ))}
             </ul>
           </div>

@@ -44,23 +44,36 @@ export const Contact = () => {
         <Paragraph typography="sub3">
           <a
             href="mailto:example@email.com"
-            style={{ color: `var(--color-gray-700)` }}
+            style={{ color: `var(--color-gray-700)`, textDecoration: "none" }}
           >
             joohj0509@gmail.com
           </a>
         </Paragraph>
         <Spacing y={4} />
         <Paragraph typography="sub3">010 8651 1577</Paragraph>
+        <Spacing y={4} />
+        <Paragraph typography="sub3" as="p" color="blue400">
+          GitHub
+        </Paragraph>
+        <Paragraph typography="sub3" as="p">
+          <a
+            href=" https://github.com/Celinejoo"
+            style={{ color: `var(--color-gray-700)`, textDecoration: "none" }}
+            target="_blank"
+          >
+            https://github.com/Celinejoo
+          </a>
+        </Paragraph>
         <Spacing y={16} />
         <Paragraph typography="sub2" color="blue400" fontWeight="bold">
           간단소개
         </Paragraph>
         <Spacing y={8} />
-        {Text.map((item: string) => (
-          <>
+        {Text.map((item: string, index: number) => (
+          <div key={index}>
             <Paragraph typography="sub2">{item}</Paragraph>
             <Spacing y={4} />
-          </>
+          </div>
         ))}
       </CardWrap>
     </>

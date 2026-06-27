@@ -190,7 +190,7 @@ export const data = [
     id: "publishlink",
     tag: "퍼블리시",
     title: "PUBLISHlink(서비스종료)",
-    date: "2021.09 - 2022.12",
+    date: "2021.06 - 2022.12",
     buttonLabel: "구현화면 자세히 보러가기",
     link: "https://indigo-andesaurus-e0c.notion.site/PUBLISHlink-3d61bcc075f04598ac3e76387169bca2",
     summary: `퍼블리시와 협약된 각 언론사에게 프로젝트 핵심 요소인 ‘위젯’을 코드로 제공하여 모든 기사 페이지에 삽입하고 독자는 이를 통해 기사를 소비(읽기, 공유하기 등)할 때마다 암호화폐 리워드를 적립 받을 수 있는 서비스`,
@@ -342,13 +342,6 @@ export const data = [
         details: [
           "pnpm Workspace 기반의 모노레포 환경을 구성하여 디자인 토큰과 UI 패키지를 효율적으로 관리하였습니다.",
           "Rollup을 활용하여 UI 라이브러리를 번들링하고 ESM/CJS 형식을 모두 지원하도록 구성했으며, Tree Shaking을 고려한 배포 환경을 구축하였습니다.",
-        ],
-      },
-      {
-        category: "데이터 시각화",
-        details: [
-          "Chart.js를 활용하여 관리자 대시보드의 통계 데이터를 시각화하고, Gradient Color를 적용하여 데이터 가독성과 시각적 완성도를 높였습니다.",
-          "차트 옵션을 커스터마이징하여 프로젝트 디자인 가이드에 맞는 통계 UI를 구현하고, 사용자에게 직관적인 데이터 경험을 제공하였습니다.",
         ],
       },
     ],
