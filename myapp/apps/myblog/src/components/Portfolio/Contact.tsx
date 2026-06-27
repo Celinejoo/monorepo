@@ -43,10 +43,10 @@ export const Contact = () => {
         <Spacing y={4} />
         <Paragraph typography="sub3">
           <a
-            href="mailto:example@email.com"
+            href="mailto:joohj0509@naver.com"
             style={{ color: `var(--color-gray-700)`, textDecoration: "none" }}
           >
-            joohj0509@gmail.com
+            joohj0509@naver.com
           </a>
         </Paragraph>
         <Spacing y={4} />
@@ -57,7 +57,7 @@ export const Contact = () => {
         </Paragraph>
         <Paragraph typography="sub3" as="p">
           <a
-            href=" https://github.com/Celinejoo"
+            href="https://github.com/Celinejoo"
             style={{ color: `var(--color-gray-700)`, textDecoration: "none" }}
             target="_blank"
           >

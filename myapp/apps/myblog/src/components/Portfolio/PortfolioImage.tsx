@@ -74,14 +74,14 @@ export const PortfolioImage = ({
           {title}
         </Paragraph>
         <Spacing y={4} />
-        <Paragraph typography="sub2" color="gray500">
+        <Paragraph typography="sub2" color="gray700">
           {summary}
         </Paragraph>
         <Spacing y={8} />
         <Paragraph typography="sub2" color="blue600" fontWeight="bold">
           기여도
         </Paragraph>
-        <Paragraph typography="sub2" color="gray500">
+        <Paragraph typography="sub2" color="gray700">
           {contribution}
         </Paragraph>
       </CardHeader>
