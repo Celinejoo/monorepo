@@ -1,6 +1,7 @@
 import styled from "@emotion/styled";
 import { Badge, CardContents, CardHeader, Flex, Paragraph } from "@repo/ui";
 import { Spacing } from "../Spacing";
+import { keyframes } from "@emotion/react";
 
 type PortfolioCardProps = {
   id: number | string;
@@ -16,24 +17,45 @@ type PortfolioCardProps = {
   buttonLabel?: string;
 };
 
+const rotateBorder = keyframes`
+  to {
+      --angle: 360deg;
+    }
+`;
+
 const CardWrap = styled.div`
+  @property --angle {
+    syntax: "<angle>";
+    inherits: false;
+    initial-value: 0deg;
+  }
+
+  --angle: 0deg;
+
   min-height: 520px;
   padding: 20px;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.12);
   border-radius: 24px;
 
   backdrop-filter: blur(20px);
 
-  background: rgba(255, 255, 255, 0.06);
-  border: 1px solid rgba(255, 255, 255, 0.12);
-
-  transition: all 0.3s ease;
-
   &:hover {
     transform: translateY(-4px);
-    background: rgba(255, 255, 255, 0.1);
+    background:
+      linear-gradient(#020617, #020617) padding-box,
+      conic-gradient(
+        from var(--angle),
+        transparent 0deg,
+        transparent 300deg,
+        #4299e1 330deg,
+        transparent 360deg
+      );
+    animation: ${rotateBorder} 4s linear infinite;
     box-shadow: 0 20px 40px rgba(0, 0, 0, 0.12);
   }
 `;
+
 export const PortfolioImage = ({
   tag,
   title,
