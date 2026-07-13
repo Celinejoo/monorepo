@@ -15,11 +15,12 @@ type FormErrors = {
   content?: string;
 };
 
-export type CategoryType = "자바스크립트" | "프로젝트" | "OTHERS";
+export type CategoryType = "자바스크립트" | "HTML/CSS" | "프로젝트" | "OTHERS";
 
 // eslint-disable-next-line react-refresh/only-export-components
 export const CATEGORIES: CategoryType[] = [
   "자바스크립트",
+  "HTML/CSS",
   "프로젝트",
   "OTHERS",
 ];

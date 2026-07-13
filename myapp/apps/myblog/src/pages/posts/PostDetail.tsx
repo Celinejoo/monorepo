@@ -57,13 +57,14 @@ function PostDetail() {
     }
   };
 
-  const BadgeColor =
-    post?.category === "자바스크립트"
-      ? "green500"
-      : post?.category === "프로젝트"
-        ? "blue500"
-        : "pink500";
+  const badgeColorMap = {
+    자바스크립트: "green500",
+    프로젝트: "blue500",
+    "HTML/CSS": "purple500",
+    OTHERS: "pink500",
+  };
 
+  const badgeColor = post ? badgeColorMap[post.category] : "pink500";
   useEffect(() => {
     if (typeof post?.likeCount === "number") {
       setCount(post.likeCount);
@@ -72,7 +73,7 @@ function PostDetail() {
 
   return (
     <InnerSection>
-      <Badge background={BadgeColor} size="small">
+      <Badge background={badgeColor} size="small">
         <Paragraph typography="sub4" color="white0">
           {post?.category}
         </Paragraph>

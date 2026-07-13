@@ -7,13 +7,19 @@ import { Timestamp } from "firebase/firestore";
 import { useNavigate } from "react-router";
 import { useState } from "react";
 
-export type TabType = "ALL" | "자바스크립트" | "프로젝트" | "OTHERS";
+export type TabType =
+  | "ALL"
+  | "HTML/CSS"
+  | "자바스크립트"
+  | "프로젝트"
+  | "OTHERS";
 
 // eslint-disable-next-line react-refresh/only-export-components
 export const TabItems: TabType[] = [
   "ALL",
   "자바스크립트",
   "프로젝트",
+  "HTML/CSS",
   "OTHERS",
 ];
 
@@ -87,12 +93,14 @@ function Home() {
         <ul>
           {posts &&
             filteredPosts?.map((item) => {
-              const BadgeColor =
-                item.category === "자바스크립트"
-                  ? "green500"
-                  : item.category === "프로젝트"
-                    ? "blue500"
-                    : "pink500";
+              const badgeColorMap = {
+                자바스크립트: "green500",
+                프로젝트: "blue500",
+                "HTML/CSS": "purple500",
+                OTHERS: "pink500",
+              };
+
+              const badgeColor = badgeColorMap[item.category] ?? "pink500";
               return (
                 <>
                   <List
@@ -104,7 +112,7 @@ function Home() {
                     key={item.id}
                   >
                     <List.Leading>
-                      <Badge background={BadgeColor} size="small">
+                      <Badge background={badgeColor} size="small">
                         <Paragraph typography="sub4" color="white0">
                           {item.category}
                         </Paragraph>
