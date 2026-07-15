@@ -3,3 +3,9 @@
   line-height: 1.2;
   font-size: 14px;
 }
+
+.wmde-markdown ul,
+.wmde-markdown ol,
+.wmde-markdown dl {
+  list-style: revert;
+}
