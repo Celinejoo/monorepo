@@ -5,7 +5,7 @@ export const data = [
     image:
       "https://res.cloudinary.com/dkvn4lmev/image/upload/v1782205898/Gemini_Generated_Image_yjgfn7yjgfn7yjgf_tzrcl2.webp",
     title: "카카오페이 내 보험 상세내역 개편",
-    date: "2023.11 ~ 2024. 07",
+    date: "2024.06 ~ 2024. 09",
     summary: "사용자가 보유한 보험의 정보를 확인할 수 있는 상세 화면 서비스",
     contribution: "UI 컴포넌트 개발 80%",
     desc: `사용자가 보유한 보험의 정보를 확인할 수 있는 상세 화면 서비스입니다.\n 아웃바운드 메시지 유입 사용자를 대상으로 보험 진단, 병원비 청구, 보험 콘텐츠 등 다양한 보험 서비스로 자연스럽게 확장 유도하는 허브 역할을 수행하며,\n서비스 이용률 및 매출 증대를 목표로 UI/UX 개편이 진행되었습니다.`,
